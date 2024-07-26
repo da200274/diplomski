@@ -1,0 +1,161 @@
+<body>
+    <main>
+        <!-- Hero -->
+        <div class="section section-header pb-7">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-8 text-center">
+                        <h1 class="display-2 mb-4">Naši restorani</h1>
+                    </div>
+                </div>
+            </div>        
+        </div>
+        <section class="section section-lg pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="card bg-secondary shadow-soft border-light p-4">
+                            <div class="row">
+                                <table class="table table-striped">
+                                    <thead class="thead-dark">
+                                      <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col" (click)="sortData('naziv')">
+                                            Naziv
+                                            <span *ngIf="sortColumn === 'naziv'">
+                                              <span *ngIf="sortDirection === 'asc'">▲</span>
+                                              <span *ngIf="sortDirection === 'desc'">▼</span>
+                                            </span>
+                                          </th>
+                                          <th scope="col" (click)="sortData('adresa')">
+                                            Adresa
+                                            <span *ngIf="sortColumn === 'adresa'">
+                                              <span *ngIf="sortDirection === 'asc'">▲</span>
+                                              <span *ngIf="sortDirection === 'desc'">▼</span>
+                                            </span>
+                                          </th>
+                                          <th scope="col" (click)="sortData('tip')">
+                                            Tip restorana
+                                            <span *ngIf="sortColumn === 'tip'">
+                                              <span *ngIf="sortDirection === 'asc'">▲</span>
+                                              <span *ngIf="sortDirection === 'desc'">▼</span>
+                                            </span>
+                                          </th>
+                                          <th>
+                                            Konobari
+                                          </th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor="let r of restaurants; let i = index">
+                                        <th scope="row">{{i + 1}}</th>
+                                        <td>{{r.naziv}}</td>
+                                        <td>{{r.adresa}}</td>
+                                        <td>{{r.tip}}</td>
+                                        <td>
+                                            <table>
+                                                <tr *ngFor="let k of r.radnici">
+                                                    <td>{{k.ime}}</td>
+                                                    <td>{{k.prezime}}</td>
+                                                </tr>
+                                            </table>
+
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                            <div>
+                                <form [formGroup]="searchForm">
+                                    <label for="naziv">Naziv:  </label>
+                                    <input type="text" id="naziv" formControlName="naziv">
+                                    <br>
+                                
+                                    <label for="adresa">Adresa:  </label>
+                                    <input type="text" id="adresa" formControlName="adresa">
+                                    <br>
+                                
+                                    <label for="tip">Tip restorana:  </label>
+                                    <input type="text" id="tip" formControlName="tip">
+                                    <br>
+                              
+                                    <button type="submit" (click)="search()">Search</button>
+                                </form>
+                            </div>
+                            <div *ngIf="searched_restaurants.length > 0">
+                                <h3>Search Results:</h3>
+                                <ul>
+                                <li *ngFor="let s of searched_restaurants">
+                                    <strong>Naziv:</strong> {{ s.naziv }} <br>
+                                    <strong>Adresa:</strong> {{ s.adresa }} <br>
+                                    <strong>Tip:</strong> {{ s.tip }}
+                                </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Section -->
+        <section class="section section-lg pt-0">
+            <div class="container">
+                <div class="row align-items-center justify-content-around">
+                    <div class="col-md-6 col-xl-6 mb-5">
+                        <div class="card shadow-soft border-light organic-radius p-3">
+                            <img class="organic-radius img-fluid" src="../../../assets/home_picture/slika1.webp" alt="modern desk">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-5 text-center text-md-left">
+                        <h2 class="h1 mb-4">Nešto o nama</h2>
+                        <p class="lead">Broj restorana: {{broj_restorana}}</p>
+                        <p class="lead">Broj gostiju: {{broj_gostiju}}</p>
+                        <p class="lead">Broj rezervacija u poslednja 24h: {{broj_rezervacija_dan}}</p>
+                        <p class="lead">Broj rezervacija u poslednjih nedelju dana: {{broj_rezervacija_nedelja}}</p>
+                        <p class="lead">Broj rezervacija u poslednjih mesec dana: {{broj_rezervacija_mesec}}</p>
+                        <!--<img src="../../assets/img/signature.svg" alt="signature" class="mt-4" width="150">-->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End of section -->
+        <!-- Section
+        <section class="section section-lg pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-4 col-lg-4 text-center">
+                        <div class="icon-box mb-4">
+                            <div class="icon icon-shape shadow-soft border border-light rounded-circle mb-4">
+                                <span class="far fa-smile-beam"></span>
+                            </div>
+                            <h3 class="h5">Učenici</h3>
+                            <span class="counter display-3 text-gray d-block">{{num_students}}</span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-4 col-lg-4 text-center">
+                        <div class="icon-box mb-4">
+                            <div class="icon icon-shape shadow-soft border border-light rounded-circle mb-4">
+                                <span class="far fa-eye"></span>
+                            </div>
+                            <h3 class="h5">Profesori</h3>
+                            <span class="counter display-3 text-gray d-block">{{num_teachers}}</span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-4 col-lg-4 text-center">
+                        <div class="icon-box mb-4">
+                            <div class="icon icon-shape shadow-soft border border-light rounded-circle mb-4">
+                                <span class="fas fa-globe-europe"></span>
+                            </div>
+                            <h3 class="h5">Broj časova</h3>
+                            <span class="counter display-3 text-gray d-block">80</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        
+    </main>
+
+
+
+</body>

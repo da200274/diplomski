@@ -1,0 +1,13 @@
+
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
