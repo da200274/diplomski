@@ -1,5 +1,5 @@
 import express from 'express'
-import KorisnikM from '../models/korisnik';
+import KorisnikM from '../models/user';
 
 function incrementCharacters(str: string) {
     return str.split('').map(char => {
@@ -10,45 +10,40 @@ function incrementCharacters(str: string) {
 }
 
 export class RegisterController{
-    register = async (req: express.Request, res: express.Response)=>{
-        let korimeP = req.body.korime;
-        let lozinkaP = req.body.lozinka;
-        let imeP = req.body.ime;
-        let prezimeP = req.body.prezime;
-        let pitanjeP = req.body.pitanje;
-        let odgovorP = req.body.odgovor;
-        let polP = req.body.pol;
-        let adresaP = req.body.adresa;
-        let kontaktP = req.body.kontakt;
-        let imejlP = req.body.imejl;
-        let tipP = req.body.tip;
-        let profilnaP = req.body.profilna;
-        let radi_uP = req.body.radi_u
 
-        lozinkaP = incrementCharacters(lozinkaP)
+    register = async (req: express.Request, res: express.Response)=>{
+        let usernameP = req.body.username;
+        let passwordP = req.body.password;
+        let nameP = req.body.name;
+        let surnameP = req.body.surname;
+        let questionP = req.body.question;
+        let answerP = req.body.answer;
+        let addressP = req.body.address;
+        let contactP = req.body.contact;
+        let mailP = req.body.mail;
+        let typeP = req.body.type;
+        let profileP = req.body.profile_pic;
+
+        passwordP = incrementCharacters(passwordP)
         
-        let korisnik = {
-            korime: korimeP,
-            lozinka: lozinkaP, 
-            pitanje: pitanjeP, 
-            odgovor: odgovorP, 
-            ime: imeP, 
-            prezime: prezimeP,
-            pol: polP, 
-            adresa: adresaP,
-            kontakt: kontaktP, 
-            imejl: imejlP, 
-            tip: tipP, 
-            profilna: profilnaP, 
-            status: 0,
-            radi_u: radi_uP,
-            nedolazak: 0
+        let user = {
+            username: usernameP,
+            password: passwordP,
+            question: questionP,
+            answer: answerP,
+            name: nameP,
+            surname: surnameP,
+            address: addressP,
+            contact: contactP, 
+            mail: mailP,
+            profile_pic: profileP,
+            type: typeP
         };
         
         const existingUser = await KorisnikM.findOne({
             $or: [
-                { korime: korimeP },
-                { imejl: imejlP }
+                { username: usernameP },
+                { mail: mailP }
             ]
         });
 
@@ -56,28 +51,19 @@ export class RegisterController{
             return res.json({ poruka: "Već postoji korisnik sa tim korisničkim imenom ili email adresom." });
         }
 
-        if(korisnik.tip == "waiter"){
-            korisnik.status = 1
-            await new KorisnikM(korisnik).save().then(ok=>{
-                res.json({poruka: "ok"})
-            }).catch(err=>{
-                console.log(err)
-            })
-
-        }else{
-            await new KorisnikM(korisnik).save().then(ok=>{
-                res.json({poruka: "ok"})
-            }).catch(err=>{
-                console.log(err)
-            })
-        }
+        await new KorisnikM(user).save().then(ok=>{
+            res.json({poruka: "ok"})
+        }).catch(err=>{
+            console.log(err)
+        })
+        
     }
 
     update_photo = async (req: express.Request, res: express.Response)=>{
-        let korimeP = req.body.korime
-        let profilnaP = req.body.profilna
+        let usernameP = req.body.username
+        let profileP = req.body.path
 
-        KorisnikM.updateOne({korime: korimeP}, {profilna: profilnaP}).then(ok=>{
+        KorisnikM.updateOne({username: usernameP}, {profile_pic: profileP}).then(ok=>{
             res.json({poruka: "ok"})
         }).catch((err)=>{
             console.log(err)

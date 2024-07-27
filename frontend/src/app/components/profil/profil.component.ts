@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Korisnik } from 'src/app/models/korisnik';
+import { User } from 'src/app/models/user';
 import { FetchService } from 'src/app/services/fetch.service';
 import { UpdateDataService } from 'src/app/services/update-data.service';
 
@@ -13,12 +13,12 @@ export class ProfilComponent implements OnInit{
 
   constructor(private router: Router, private fetchServis: FetchService, private updateDataServis: UpdateDataService){}
   ngOnInit(): void {
-    let temp = localStorage.getItem("profil")
-    let tip = localStorage.getItem("tip")
+    let temp = localStorage.getItem("profile")
+    let tip = localStorage.getItem("type")
     if(temp && tip){
-      this.korime = temp
-      this.tip = tip
-      this.fetchServis.user_by_korime(this.korime).subscribe(
+      this.username = temp
+      this.type = tip
+      this.fetchServis.user_by_korime(this.username).subscribe(
         user=>{
           if(user){
             this.k = user
@@ -38,20 +38,9 @@ export class ProfilComponent implements OnInit{
     this.router.navigate(["change_password"])
   }
 
-  deactivate(korime: string){
-    this.updateDataServis.ban(korime).subscribe(
-      data=>{
-        if(data.poruka != "ok"){
-          console.log("Neuspešno blokiranje korisnika.")
-          return
-        }
-      }
-    )
-  }
-
-  korime: string = ""
-  tip: string = ""
-  k: Korisnik = new Korisnik()
+  username: string = ""
+  type: string = ""
+  k: User = new User()
   fetched: boolean = false;
 
 }

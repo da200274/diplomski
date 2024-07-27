@@ -7,5 +7,4 @@ changeRouter.route("/change").post(
     (req,res)=>new ChangeController().change(req,res)
 )
 
-
 export default changeRouter;

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderVisitorComponent } from './components/headers/header-visitor/header-visitor.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HeaderAdminComponent } from './components/headers/header-admin/header-admin.component';
 import { HeaderCustomerComponent } from './components/headers/header-customer/header-customer.component';
 import { HeaderWaiterComponent } from './components/headers/header-waiter/header-waiter.component';
 
@@ -14,18 +13,15 @@ export class AppComponent {
   title = 'frontend';
 
   getHeaderComponent(): any {
-    const userRole = localStorage.getItem("tip");
+    const userRole = localStorage.getItem("type");
     switch (userRole) {
-      case 'admin':
-        return HeaderAdminComponent;
-      case 'musterija':
+      case 'customer':
         return HeaderCustomerComponent;
       case 'waiter':
         return HeaderWaiterComponent
       default:
         return HeaderVisitorComponent;
     }
-    return HeaderVisitorComponent;
   }
 
   getFooterComponent():any{

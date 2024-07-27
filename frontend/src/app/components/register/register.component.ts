@@ -63,12 +63,12 @@ export class RegisterComponent {
   }
 
   registruj(){
-    this.tip = "musterija"
+    this.type = "customer"
     this.check_constraints();
-    localStorage.setItem("korime", this.korime);
+    localStorage.setItem("korime", this.username);
     if(this.message == ""){
-      this.registerServis.register_user(this.korime, this.lozinka, this.pitanje, this.odgovor, this.ime, this.prezime, this.pol,
-        this.adresa, this.kontakt, this.mejl, this.kartica, this.profilna, this.tip).subscribe(
+      this.registerServis.register_user(this.username, this.password, this.question, this.answer, this.name, this.surname,
+        this.address, this.contact, this.mail, this.profile_pic, this.type).subscribe(
           data=>{
             if(data.poruka == "ok"){
               this.send_photo();
@@ -101,7 +101,7 @@ export class RegisterComponent {
   }
 
   update_photo(naziv: string){
-    this.registerServis.update_photo(naziv, this.korime).subscribe(
+    this.registerServis.update_photo(naziv, this.username).subscribe(
       data=>{
         if(data.poruka == "ok"){
           console.log("Uspešna registracija.");
@@ -115,20 +115,16 @@ export class RegisterComponent {
   }
 
   check_constraints(){
-    const regex = /^(?=.*[A-Z])(?=.*[a-z]{3})(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z0-9!@#$%^&*()_+]{6,10}$/;
-    if(!regex.test(this.lozinka)){
-      this.message = "Lozinka mora da pocne slovom, ima bar jedno veliko slovo, jedan broj, 3 mala slova i jedan specijalni karakter! Max 10 min 6 karaktera."
+    const regex = /^[a-zA-Z0-9]+$/;
+    if(!regex.test(this.password)){
+      this.message = "Lozinka treba da sadrži samo slova i brojeve!"
       return;
     }
-    else if(this.lozinka != this.potvrda){
-      this.message = "Lozinke se ne poklapaju!";
-      return;
-    }
-    else if(this.korime == "" || this.lozinka == "" || this.potvrda == "" || this.mejl == "" || this.pitanje== "" || this.odgovor == ""){
+    else if(this.username == "" || this.mail == "" || this.question== "" || this.answer == ""){
       this.message = "Popunite sve podatke!"
       return;
     }
-    else if(this.ime == "" || this.prezime == "" || this.pol == "" || this.adresa == "" || this.kontakt == "" || this.kartica == ""){
+    else if(this.name == "" || this.surname == "" || this.address == "" || this.contact == ""){
       this.message = "Popunite sve podatke!"
       return;
     }
@@ -140,20 +136,17 @@ export class RegisterComponent {
   file: File|null = null;
 
 
-  korime: string = "";
-  lozinka: string = "";
-  mejl: string = "";
-  potvrda: string = "";
-  pitanje: string = "";
-  odgovor: string = "";
-  ime: string = "";
-  prezime: string = "";
-  pol: string = "";
-  adresa: string = "";
-  kontakt: string = "";
-  profilna: string = "";
-  tip: string = "";
-  kartica: string = "";
+  username: string = "";
+  password: string = "";
+  mail: string = "";
+  question: string = "";
+  answer: string = "";
+  name: string = "";
+  surname: string = "";
+  address: string = "";
+  contact: string = "";
+  profile_pic: string = "";
+  type: string = "";
 
   message: string = ""
 

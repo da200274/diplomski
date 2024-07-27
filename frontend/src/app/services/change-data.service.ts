@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Poruka } from '../models/poruka';
+import { Message } from '../models/message';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class ChangeDataService {
   backendUrl = "http://localhost:4000"
 
   change(data: any){
-    return this.http.post<Poruka>(`${this.backendUrl}/change/change`, data);
+    return this.http.post<Message>(`${this.backendUrl}/change/change`, data);
   }
 
 }

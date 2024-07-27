@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Poruka } from '../models/poruka';
+import { Message } from '../models/message';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -11,39 +11,37 @@ export class RegisterService {
 
   backendUrl = "http://localhost:4000"
 
-  register_user(korime: string, lozinka: string, pitanje: string, odgovor: string, ime: string, prezime: string, pol: string,
-     adresa: string, kontakt: string, mejl: string, restoran: string, profilna: string,  tip: string){
+  register_user(username: string, password: string, question: string, answer: string, name: string, surname: string,
+    address: string, contact: string, mail: string, profile_pic: string, type: string){
     const data = {
-      korime: korime,
-      lozinka: lozinka,
-      pitanje: pitanje,
-      odgovor: odgovor,
-      ime: ime,
-      prezime: prezime,
-      pol: pol,
-      adresa: adresa,
-      kontakt: kontakt, 
-      imejl: mejl,
-      profilna: profilna,
-      radi_u: restoran,
-      tip: tip
+      username: username,
+      password: password,
+      question: question,
+      answer: answer,
+      name: name,
+      surname: surname,
+      address: address,
+      contact: contact, 
+      mail: mail,
+      profile_pic: profile_pic,
+      type: type
     }
-    return this.http.post<Poruka>(`${this.backendUrl}/register/register`, data);
+    return this.http.post<Message>(`${this.backendUrl}/register/register`, data);
   }
 
   file_upload(file: File){
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
-    return this.http.post<Poruka>(`${this.backendUrl}/register/add_photo`, formData);
+    return this.http.post<Message>(`${this.backendUrl}/register/add_photo`, formData);
   }
 
-  update_photo(putanja: string, korime: string){
+  update_photo(path: string, username: string){
     const data = {
-      korime: korime,
-      profilna: putanja
+      username: username,
+      path: path
     }
-    console.log(putanja)
-    return this.http.post<Poruka>(`${this.backendUrl}/register/update_photo`, data);
+    //console.log(path)
+    return this.http.post<Message>(`${this.backendUrl}/register/update_photo`, data);
   }
 }
 

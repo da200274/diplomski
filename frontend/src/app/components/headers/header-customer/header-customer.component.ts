@@ -10,10 +10,10 @@ export class HeaderCustomerComponent implements OnInit{
 
   constructor(private router: Router){}
   ngOnInit(): void {
-    let korisnik = localStorage.getItem("korisnik")
-    if(korisnik){
-      let temp = JSON.parse(korisnik)
-      localStorage.setItem("profil", temp.korime)
+    let user = localStorage.getItem("user")
+    if(user){
+      let temp = JSON.parse(user)
+      localStorage.setItem("profile", temp.username)
     }
   }
 
@@ -23,22 +23,11 @@ export class HeaderCustomerComponent implements OnInit{
   }
 
   goto_profil(){
-    this.router.navigate(['profil']);
+    this.router.navigate(['profile']);
   }
 
   goto_change(){
     this.router.navigate(['change_password'])
   }
 
-  goto_restaurant(){
-    this.router.navigate(['restaurants'])
-  }
-
-  goto_dostava(){
-    this.router.navigate(['delivery_customer'])
-  }
-
-  goto_reservations(){
-    this.router.navigate(['reservations'])
-  }
 }

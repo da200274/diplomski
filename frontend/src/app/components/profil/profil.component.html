@@ -13,39 +13,32 @@
                             <div class="card-body text-center">
                                 <div class="form-group">
                                     <div class="form-group" *ngIf="fetched == true">
-                                        <img [src]="'assets/profile_pics/' + k.profilna" alt="Image Description" class="profile-pic">
+                                        <img [src]="'assets/profile_pics/' + k.profile_pic" alt="Image Description" class="profile-pic">
                                     </div>
                                       
                                     <br>
                                     <div class="form-group">
-                                        <p>Korisničko ime: {{k.korime}}</p>
+                                        <p>Korisničko ime: {{k.username}}</p>
                                     </div>
                                     <div class="form-group">
-                                        <p>Mejl: {{k.imejl}}</p>
+                                        <p>Mejl: {{k.mail}}</p>
                                     </div>
                                     <div class="form-group">
-                                        <p>Ime: {{k.ime}}</p>
+                                        <p>Ime: {{k.name}}</p>
                                     </div>
                                     <div class="form-group">
-                                        <p>Prezime: {{k.prezime}}</p>
+                                        <p>Prezime: {{k.surname}}</p>
                                     </div>
                                     <div class="form-group">
-                                        <p>Adresa: {{k.adresa}}</p>
+                                        <p>Adresa: {{k.address}}</p>
                                     </div>
                                     <div class="form-group">
-                                        <p>Kontakt: {{k.kontakt}}</p>
-                                    </div>
-                                    <div class="form-group" *ngIf="k.tip == 'waiter'">
-                                        <p>Restoran: {{k.radi_u}}</p>
+                                        <p>Kontakt: {{k.contact}}</p>
                                     </div>
                                 </div>
                                 <div>
                                     <button class="btn btn-block btn-info" (click)="update_data()">
                                         Ažuriraj
-                                    </button>
-                                    <div class="divider bg-secondary"></div>
-                                    <button *ngIf="tip === 'admin'" class="btn btn-block btn-warning" (click)="deactivate(k.korime)">
-                                        Deaktiviraj
                                     </button>
                                 </div>
                             </div>

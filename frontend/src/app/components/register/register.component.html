@@ -15,89 +15,57 @@
                                     <div class="form-group">
                                         <label for="korime">Korisničko ime</label>
                                         <div class="input-group mb-4">
-                                            <input class="form-control" id="korime" [(ngModel)]="korime" type="text" aria-label="email adress">
+                                            <input class="form-control" id="korime" [(ngModel)]="username" type="text" aria-label="email adress">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="mejl">Mejl</label>
                                         <div class="input-group mb-4">
-                                            <input class="form-control" id="mejl" [(ngModel)]="mejl" type="text" aria-label="email adress" required>
+                                            <input class="form-control" id="mejl" [(ngModel)]="mail" type="text" aria-label="email adress" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="lozinka">Lozinka</label>
                                         <div class="input-group mb-4">
-                                            <input class="form-control" id="lozinka" [(ngModel)]="lozinka" type="password" aria-label="email adress" required>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="potvrda">Potvrdi lozinku</label>
-                                        <div class="input-group mb-4">
-                                            <input class="form-control" id="potvrda" [(ngModel)]="potvrda" type="password" aria-label="Password" required>
+                                            <input class="form-control" id="lozinka" [(ngModel)]="password" type="password" aria-label="email adress" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="potvrda">Sigurnosno pitanje</label>
                                         <div class="input-group mb-4">
-                                            <input class="form-control" id="pitanje" [(ngModel)]="pitanje" type="text" aria-label="Password" required>
+                                            <input class="form-control" id="pitanje" [(ngModel)]="question" type="text" aria-label="Password" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="potvrda">Odgovor na pitanje</label>
                                         <div class="input-group mb-4">
-                                            <input class="form-control" id="odgovor" [(ngModel)]="odgovor" type="text" aria-label="Password" required>
+                                            <input class="form-control" id="odgovor" [(ngModel)]="answer" type="text" aria-label="Password" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="ime">Ime</label>
                                         <div class="input-group mb-4">
-                                            <input class="form-control" id="ime" [(ngModel)]="ime" type="text" aria-label="email adress">
+                                            <input class="form-control" id="ime" [(ngModel)]="name" type="text" aria-label="email adress">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="prezime">Prezime</label>
                                         <div class="input-group mb-4">
-                                            <input class="form-control" id="prezime" [(ngModel)]="prezime" type="text" aria-label="email adress">
+                                            <input class="form-control" id="prezime" [(ngModel)]="surname" type="text" aria-label="email adress">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="adresa">Adresa</label>
                                         <div class="input-group mb-4">
-                                            <input class="form-control" id="adresa" [(ngModel)]="adresa" type="text" aria-label="email adress">
+                                            <input class="form-control" id="adresa" [(ngModel)]="address" type="text" aria-label="email adress">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="telefon">Kontakt</label>
                                         <div class="input-group mb-4">
-                                            <input class="form-control" id="telefon" [(ngModel)]="kontakt" type="text" aria-label="email adress">
+                                            <input class="form-control" id="telefon" [(ngModel)]="contact" type="text" aria-label="email adress">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="telefon">Broj kreditne kartice</label>
-                                        <div class="input-group mb-4">
-                                            <input class="form-control" id="kartica" [(ngModel)]="kartica" type="text" aria-label="email adress">
-                                        </div>
-                                    </div>
-                                    <p class="form-check-inline">Pol: </p>
-                                    <div class="form-check-inline mr-3">
-                                        <input type="radio" name="pol" value="M" [(ngModel)]="pol"> 
-                                        <label class="form-check-label">
-                                                Muški   
-                                        </label>
-                                    </div>
-                                    <div class="form-check-inline mr-3">
-                                        <input type="radio" name="pol" value="Z" [(ngModel)]="pol">
-                                        <label class="form-check-label">
-                                                Ženski
-                                        </label>
-                                    </div>
-                                    <div class="form-check-inline mr-3">
-                                        <input type="radio" name="pol" value="N" [(ngModel)]="pol">
-                                        <label class="form-check-label">
-                                                Ne želim da se izjasnim
-                                        </label>
-                                    </div>
-                                    <br>
                                     <p class="form-check-inline">Profilna slika: </p>
                                     <div class="form-check-inline mr-3">
                                         <input type="file" (change)="onFileSelected($event)" #fileInput>

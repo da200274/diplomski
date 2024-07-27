@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Korisnik } from '../models/korisnik';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -10,20 +10,12 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   backendUrl = "http://localhost:4000"
-  login(korime: string, lozinka: string){
+  login(username: string, password: string){
     const data = {
-      korime: korime,
-      lozinka: lozinka
+      username: username,
+      password: password
     }
-    return this.http.post<Korisnik>(`${this.backendUrl}/login/login_korisnik`, data);
-  }
-
-  login_admin(korime: string, lozinka: string){
-    const data = {
-      korime: korime,
-      lozinka: lozinka
-    }
-    return this.http.post<Korisnik>(`${this.backendUrl}/login/login_admin`, data);
+    return this.http.post<User>(`${this.backendUrl}/login/login`, data);
   }
 
 }

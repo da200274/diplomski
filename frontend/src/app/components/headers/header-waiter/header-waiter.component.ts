@@ -11,10 +11,10 @@ export class HeaderWaiterComponent implements OnInit{
   constructor(private router: Router){}
 
   ngOnInit(): void {
-    let korisnik = localStorage.getItem("korisnik")
+    let korisnik = localStorage.getItem("user")
     if(korisnik){
       let temp = JSON.parse(korisnik)
-      localStorage.setItem("profil", temp.korime)
+      localStorage.setItem("profile", temp.korime)
     }
   }
 
@@ -24,7 +24,7 @@ export class HeaderWaiterComponent implements OnInit{
   }
 
   goto_profile(){
-    this.router.navigate(['profil']);
+    this.router.navigate(['profile']);
   }
 
   goto_change(){
@@ -41,9 +41,5 @@ export class HeaderWaiterComponent implements OnInit{
 
   goto_my_reservations(){
     this.router.navigate(['waiter_my_reservations'])
-  }
-
-  goto_charts(){
-    this.router.navigate(['charts'])
   }
 }

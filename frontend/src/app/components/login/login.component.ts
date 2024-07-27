@@ -12,19 +12,19 @@ export class LoginComponent {
   constructor(private router: Router, private loginServis: LoginService){}
 
   login(){
-    if(this.korime == "" || this.lozinka == ""){
+    if(this.username == "" || this.password == ""){
       this.message = "Niste uneli sve podatke";
       return;
     }
-    this.loginServis.login(this.korime, this.lozinka).subscribe(
+    this.loginServis.login(this.username, this.password).subscribe(
       data=>{
         if(data == null){
           this.message = "Ne postoji takav korisnik!"
         }
         else{
-          localStorage.setItem("tip", data.tip);
-          localStorage.setItem("korisnik", JSON.stringify(data))
-          this.router.navigate(['profil'])
+          localStorage.setItem("type", data.type);
+          localStorage.setItem("user", JSON.stringify(data))
+          this.router.navigate(['profile'])
         }
       }
     )
@@ -38,7 +38,7 @@ export class LoginComponent {
     this.router.navigate(['register']);
   }
 
-  korime: string = ""
-  lozinka: string = ""
+  username: string = ""
+  password: string = ""
   message: string = ""
 }

@@ -1,5 +1,5 @@
 import express from 'express'
-import KorisnikM from '../models/korisnik';
+import KorisnikM from '../models/user';
 
 export class ChangeController{
 

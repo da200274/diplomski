@@ -3,12 +3,8 @@ import { LoginController } from '../controllers/login.controller'
 
 const loginRouter = express.Router()
 
-loginRouter.route("/login_korisnik").post(
+loginRouter.route("/login").post(
     (req,res)=>new LoginController().login_korisnik(req,res)
-)
-
-loginRouter.route("/login_admin").post(
-    (req,res)=>new LoginController().login_admin(req,res)
 )
 
 export default loginRouter;
