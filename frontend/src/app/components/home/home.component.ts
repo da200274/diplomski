@@ -8,15 +8,11 @@ import { FetchService } from 'src/app/services/fetch.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent{
 
   constructor(
     private router: Router,
     private fetchServis: FetchService
   ){ }
-  
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
 
 }
