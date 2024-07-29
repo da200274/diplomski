@@ -21,7 +21,7 @@ export class UpdateController{
         console.log(lozinkaP)
 
         KorisnikM.updateOne({korime: korimeP}, {lozinka: lozinkaP}).then((ok)=>{
-            res.json({poruka: "ok"})
+            res.json({message: "ok"})
         }).catch((err)=>{
             console.log(err)
         })
@@ -32,7 +32,7 @@ export class UpdateController{
         let idP = req.body.id
         let vremeP = req.body.vreme_dostave
         PorudzbinaM.updateOne({_id: idP}, {status: 1, konobar: korimeP, vreme_dostave: vremeP}).then((ok)=>{
-            res.json({poruka: "ok"})
+            res.json({message: "ok"})
         }).catch((err)=>{
             console.log(err)
         })
@@ -41,7 +41,7 @@ export class UpdateController{
     reject_offer = (req: express.Request, res: express.Response)=>{
         let idP = req.body.id
         PorudzbinaM.deleteOne({_id: idP}).then((ok)=>{
-            res.json({poruka: "ok"})
+            res.json({message: "ok"})
         }).catch((err)=>{
             console.log(err)
         })
@@ -50,7 +50,7 @@ export class UpdateController{
     deliver_order = (req: express.Request, res: express.Response)=>{
         let idP = req.body.id
         PorudzbinaM.updateOne({_id: idP}, {status: 2}).then((ok)=>{
-            res.json({poruka: "ok"})
+            res.json({message: "ok"})
         }).catch((err)=>{
             console.log(err)
         })
@@ -61,7 +61,7 @@ export class UpdateController{
         let komentar = req.body.komentar
         let ocena = req.body.ocena
         RezervacijaM.updateOne({_id: idR}, { komentar: komentar, ocena: ocena}).then((ok)=>{
-            res.json({poruka: "ok"})
+            res.json({message: "ok"})
         }).catch((err)=>{
             console.log(err)
         })*/

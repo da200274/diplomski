@@ -8,5 +8,9 @@ getRouter.route("/user_by_korime").post(
     (req,res)=>new GetController().user_by_korime(req,res)
 )
 
+getRouter.route("/products_by_type").post(
+    (req,res)=>new GetController().product_by_type(req,res)
+)
+
 
 export default getRouter;

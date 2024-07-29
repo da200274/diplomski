@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RegisterService } from '../../services/register.service';
+import { ChangeDataService } from 'src/app/services/change-data.service';
+import { InsertDataService } from 'src/app/services/insert-data.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-add-product',
+  templateUrl: './add-product.component.html',
+  styleUrls: ['./add-product.component.css']
 })
-export class RegisterComponent {
+export class AddProductComponent{
 
-  constructor(private router: Router, private registerServis: RegisterService){}
+
+  constructor(private router: Router, 
+    private insertDataServis: InsertDataService,
+    private changeDataServis: ChangeDataService
+  ){}
 
   onFileSelected(event: any): void {
     this.file = event.target.files[0] as File;
@@ -58,32 +63,25 @@ export class RegisterComponent {
     }
   }
 
-  login_page(){
-    this.router.navigate(['login'])
-  }
-
-  registruj(){
-    this.type = "customer"
+  dodaj(){
     this.check_constraints();
-    localStorage.setItem("korime", this.username);
     if(this.message == ""){
-      this.registerServis.register_user(this.username, this.password, this.question, this.answer, this.name, this.surname,
-        this.address, this.contact, this.mail, this.profile_pic, this.type).subscribe(
-          data=>{
-            if(data.message == "ok"){
-              this.send_photo();
-            }
-            else {
-              this.message = "Neuspešna registracija";
-            }
+      this.insertDataServis.add_product(this.name, this.description, this.price, this.content, this.type).subscribe(
+        msg=>{
+          if(msg.message == "ok"){
+            this.send_photo()
           }
-        )
+          else {
+            this.message = "Neuspešno dodavanje proizvoda";
+          }
+        }
+      )
     }
   }
 
   send_photo(){
     if(this.file != null ){
-      this.registerServis.file_upload(this.file).subscribe(
+      this.changeDataServis.file_upload(this.file).subscribe(
         data=>{
           if(data.message != "not ok"){
             this.update_photo(data.message)
@@ -99,12 +97,12 @@ export class RegisterComponent {
     }
   }
 
-  update_photo(naziv: string){
-    this.registerServis.update_photo(naziv, this.username).subscribe(
+  update_photo(path: string){
+    this.changeDataServis.update_photo(path, this.name).subscribe(
       data=>{
         if(data.message == "ok"){
-          console.log("Uspešna registracija.");
-          this.router.navigate(['login'])
+          console.log("Uspešno dodavanje proizvoda.");
+          this.router.navigate(['profile'])
         }
         else{
           this.message = "Neuspešno ažuriranje slike!";
@@ -114,16 +112,7 @@ export class RegisterComponent {
   }
 
   check_constraints(){
-    const regex = /^[a-zA-Z0-9]+$/;
-    if(!regex.test(this.password)){
-      this.message = "Lozinka treba da sadrži samo slova i brojeve!"
-      return;
-    }
-    else if(this.username == "" || this.mail == "" || this.question== "" || this.answer == ""){
-      this.message = "Popunite sve podatke!"
-      return;
-    }
-    else if(this.name == "" || this.surname == "" || this.address == "" || this.contact == ""){
+    if(this.name == "" || this.price <= 0 || this.description== "" || this.content == "" || this.type == ""){
       this.message = "Popunite sve podatke!"
       return;
     }
@@ -134,19 +123,13 @@ export class RegisterComponent {
   image_preview: string = ""
   file: File|null = null;
 
+  name: string = ""
+  description: string = ""
+  price: number = 0
+  content: string = ""
 
-  username: string = "";
-  password: string = "";
-  mail: string = "";
-  question: string = "";
-  answer: string = "";
-  name: string = "";
-  surname: string = "";
-  address: string = "";
-  contact: string = "";
-  profile_pic: string = "";
+  picture: string = "";
   type: string = "";
 
   message: string = ""
-
 }

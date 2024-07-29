@@ -30,4 +30,9 @@ export class HeaderCustomerComponent implements OnInit{
     this.router.navigate(['change_password'])
   }
 
+  goto_sweets(type: string){
+    localStorage.setItem("sweet_type", type)
+    this.router.navigate(['sweets'])
+  }
+
 }

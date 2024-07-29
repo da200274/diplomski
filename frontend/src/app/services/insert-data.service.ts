@@ -17,4 +17,16 @@ export class InsertDataService {
     return this.http.post<Message>(`${this.backendUrl}/insert/order`, data);
   }
 
+  add_product(name: string, description: string, price: number, content: string, type: string){
+    const data = {
+      name: name,
+      description: description,
+      price: price,
+      content: content,
+      type: type,
+      picture: ""
+    }
+    return this.http.post<Message>(`${this.backendUrl}/insert/product`, data);
+  }
+
 }

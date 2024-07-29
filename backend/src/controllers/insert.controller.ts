@@ -1,5 +1,6 @@
 import express from 'express'
 import OrderM from '../models/order';
+import ProductM from '../models/product'
 
 export class InsertController{
 
@@ -7,7 +8,31 @@ export class InsertController{
         let order = req.body.order;
 
         new OrderM(order).save().then(ok=>{
-            res.json({poruka: "ok"})
+            res.json({message: "ok"})
+        }).catch(err=>{
+            console.log(err)
+        })
+    }
+
+    add_product = (req: express.Request, res: express.Response)=>{
+        let nameP = req.body.name
+        let priceP = req.body.price
+        let descriptionP = req.body.description
+        let contentP = req.body.content
+        let pictureP = req.body.picture
+        let typeP = req.body.type
+
+        let product = {
+            name: nameP,
+            price: priceP,
+            description: descriptionP,
+            content: contentP,
+            picture: pictureP,
+            type: typeP
+        }
+
+        new ProductM(product).save().then(ok=>{
+            res.json({message: "ok"})
         }).catch(err=>{
             console.log(err)
         })

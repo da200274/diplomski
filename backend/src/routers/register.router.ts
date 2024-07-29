@@ -30,10 +30,10 @@ const storage = multer.diskStorage({
   registerRouter.post('/add_photo', upload.single('file'), (req, res) => {
     const file = req.file;
     if (!file) {
-      return res.status(400).json({ poruka: 'not ok' });
+      return res.status(400).json({ message: 'not ok' });
     }
 
-    res.status(200).json({ poruka: file.filename });
+    res.status(200).json({ message: file.filename });
   });
 
 export default registerRouter;

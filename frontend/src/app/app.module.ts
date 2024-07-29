@@ -13,6 +13,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { HeaderWaiterComponent } from './components/headers/header-waiter/header-waiter.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProfilComponent } from './components/profil/profil.component';
+import { UpdateDataComponent } from './components/update-data/update-data.component';
+import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { AddProductComponent } from './components/worker/add-product/add-product.component';
+import { PaginationComponent } from './components/customer/pagination/pagination.component';
+import { SweetsListComponent } from './components/customer/sweets-list/sweets-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,12 @@ import { ProfilComponent } from './components/profil/profil.component';
     RegisterComponent,
     HeaderWaiterComponent,
     FooterComponent,
-    ProfilComponent
+    ProfilComponent,
+    UpdateDataComponent,
+    ChangePasswordComponent,
+    AddProductComponent,
+    PaginationComponent,
+    SweetsListComponent
   ],
   imports: [
     BrowserModule,

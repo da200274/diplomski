@@ -7,4 +7,8 @@ insertRouter.route("/order").post(
     (req,res)=>new InsertController().add_order(req,res)
 )
 
+insertRouter.route("/product").post(
+    (req,res)=>new InsertController().add_product(req,res)
+)
+
 export default insertRouter;

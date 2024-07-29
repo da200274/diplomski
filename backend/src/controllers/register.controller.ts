@@ -48,11 +48,11 @@ export class RegisterController{
         });
 
         if (existingUser){
-            return res.json({ poruka: "Već postoji korisnik sa tim korisničkim imenom ili email adresom." });
+            return res.json({ message: "Već postoji korisnik sa tim korisničkim imenom ili email adresom." });
         }
 
         await new KorisnikM(user).save().then(ok=>{
-            res.json({poruka: "ok"})
+            res.json({message: "ok"})
         }).catch(err=>{
             console.log(err)
         })
@@ -64,10 +64,10 @@ export class RegisterController{
         let profileP = req.body.path
 
         KorisnikM.updateOne({username: usernameP}, {profile_pic: profileP}).then(ok=>{
-            res.json({poruka: "ok"})
+            res.json({message: "ok"})
         }).catch((err)=>{
             console.log(err)
-            res.json({poruka: "Fail"})
+            res.json({message: "Fail"})
         })
     }
 }

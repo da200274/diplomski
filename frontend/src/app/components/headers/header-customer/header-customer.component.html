@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+<nav class="navbar navbar-expand-lg static-top" style="background-color: #e3f2fd;">
     <div class="container">
       <a class="navbar-brand" href="">
         <!--ovde ide interpolacija za sliku-->
@@ -20,8 +20,17 @@
           <li class="nav-item">
             <a class="nav-link">Promocije</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Poslastice
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" (click)="goto_sweets('cake')">Torte</a></li>
+              <li><a class="dropdown-item" (click)="goto_sweets('cookie')">Kolači</a></li>
+            </ul>
+          </li>
           <li class="nav-item">
-            <a class="nav-link">Poslastice</a>
+            <a class="nav-link">Korpa</a>
           </li>
           <li class="nav-item">
             <a class="nav-link">Notifikacije</a>

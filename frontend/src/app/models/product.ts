@@ -1,9 +1,9 @@
-export class Item{
+export class Product{
     name: string = ""
     price: number = 0
     description: string = ""
     type: string = ""
-    photo: string = ""
+    picture: string = ""
     content: string = ""
     comments: Comment[] = []
 }

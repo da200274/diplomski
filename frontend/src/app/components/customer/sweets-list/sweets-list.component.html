@@ -1,0 +1,26 @@
+
+<body>
+    <main>
+        <br>
+        <section class="min-vh-100 d-flex flex-column align-items-center">
+            <div class="container">
+                <div class="row" *ngFor="let row of getRows(paged_items)">
+                    <div class="col-md-4" *ngFor="let item of row">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <img class="card-img-top" [src]="'assets/sweets_pics/' + item.picture" alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text card-title">{{item.name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pagination-container mt-4">
+                <app-pagination [total_items]="products.length" [items_per_page]="items_per_page" [current_page]="current_page" (page_changed)="on_page_changed($event)"></app-pagination>
+            </div>
+        </section>
+    </main>
+
+</body>

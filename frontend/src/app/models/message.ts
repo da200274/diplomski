@@ -1,3 +1,4 @@
 export class Message{
-    poruka: string = "";
+    message: string = "";
+    korisnik: string = ""
 }

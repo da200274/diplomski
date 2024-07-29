@@ -1,6 +1,7 @@
 import express from 'express'
 import UserM from '../models/user';
 import PorudzbinaM from '../models/order'
+import ProductM from '../models/product'
 
 export class GetController{
 
@@ -14,24 +15,13 @@ export class GetController{
         })
     }
 
-    /*get_active_orders = (req: express.Request, res: express.Response)=>{
-        let korime = req.body.korime
-        PorudzbinaM.find({kupac: korime, status: 1}).then((user)=>{
-            res.json(user)
+    product_by_type = (req: express.Request, res: express.Response)=>{
+        let typeP = req.body.type
+        ProductM.find({type: typeP}).then((products)=>{
+            res.json(products)
         }).catch((err)=>{
             console.log(err)
         })
     }
-
-    archive_orders = (req: express.Request, res: express.Response)=>{
-        let korime = req.body.korime
-        PorudzbinaM.find({kupac: korime, status: 2})
-        .sort({vreme_dostave : -1})
-        .then((user)=>{
-            res.json(user)
-        }).catch((err)=>{
-            console.log(err)
-        })
-    }*/
 
 }

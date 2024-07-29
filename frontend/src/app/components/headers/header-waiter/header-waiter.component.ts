@@ -14,7 +14,7 @@ export class HeaderWaiterComponent implements OnInit{
     let korisnik = localStorage.getItem("user")
     if(korisnik){
       let temp = JSON.parse(korisnik)
-      localStorage.setItem("profile", temp.korime)
+      localStorage.setItem("profile", temp.username)
     }
   }
 
@@ -31,15 +31,11 @@ export class HeaderWaiterComponent implements OnInit{
     this.router.navigate(['change_password'])
   }
 
-  goto_delivery(){
-    this.router.navigate(['waiter_orders'])
+  goto_add(){
+    this.router.navigate(['add_product'])
   }
 
-  goto_reservations(){
-    this.router.navigate(['waiter_reservations'])
-  }
-
-  goto_my_reservations(){
-    this.router.navigate(['waiter_my_reservations'])
+  goto_offer(){
+    this.router.navigate(['user_offers'])
   }
 }

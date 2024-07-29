@@ -17,7 +17,7 @@ export class AppComponent {
     switch (userRole) {
       case 'customer':
         return HeaderCustomerComponent;
-      case 'waiter':
+      case 'worker':
         return HeaderWaiterComponent
       default:
         return HeaderVisitorComponent;

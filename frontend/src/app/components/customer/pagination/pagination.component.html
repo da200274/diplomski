@@ -1,0 +1,14 @@
+<div *ngIf="total_items > items_per_page" class="text-center">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="current_page === 1" (click)="change_page(current_page - 1)">
+        <a class="page-link">Prethodna</a>
+      </li>
+      <li class="page-item" *ngFor="let page of pages_array" [class.active]="page === current_page" (click)="change_page(page)">
+        <a class="page-link">{{ page }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="current_page === total_pages" (click)="change_page(current_page + 1)">
+        <a class="page-link">Sledeća</a>
+      </li>
+    </ul>
+  </div>
+  

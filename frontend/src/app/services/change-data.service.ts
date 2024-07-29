@@ -15,4 +15,19 @@ export class ChangeDataService {
     return this.http.post<Message>(`${this.backendUrl}/change/change`, data);
   }
 
+  file_upload(file: File){
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    return this.http.post<Message>(`${this.backendUrl}/change/add_photo`, formData);
+  }
+
+  update_photo(path: string, name: string){
+    const data = {
+      name: name,
+      path: path
+    }
+    console.log(path)
+    return this.http.post<Message>(`${this.backendUrl}/change/update_photo`, data);
+  }
+
 }
