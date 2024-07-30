@@ -5,5 +5,5 @@ export class Notification{
     seen: boolean = false
     username: string = ""
     
-    order: Order = new Order()
+    id_order: string = ""
 }

@@ -1,0 +1,48 @@
+.picture {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+body {
+    background-image: url('../../../../assets/background_pics/back1.png');
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Makes the background image fixed while scrolling */
+    min-height: 100vh; /* Ensures the body takes at least the full viewport height */
+    margin: 0; /* Removes default margin */
+}
+
+.product-details {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust the gap as needed */
+}
+
+.product-details .card-text {
+    margin: 0;
+}
+
+.custom-btn {
+    font-size: 1.75rem; /* Set the font size to match the h3 */
+    padding: 0; /* Remove default padding */
+    line-height: 1; /* Adjust line-height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.amount-text {
+    font-size: 1.75rem; /* Ensure h3 has the same font size */
+    margin: 0;
+}
+
+.amount-controls {
+    background-color: lightgray; /* Set your desired background color */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust the gap as needed */
+    padding: 5px; /* Add some padding for better appearance */
+}

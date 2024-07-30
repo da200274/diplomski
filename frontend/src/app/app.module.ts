@@ -19,6 +19,7 @@ import { AddProductComponent } from './components/worker/add-product/add-product
 import { PaginationComponent } from './components/customer/pagination/pagination.component';
 import { SweetsListComponent } from './components/customer/sweets-list/sweets-list.component';
 import { ProductComponent } from './components/customer/product/product.component';
+import { CartComponent } from './components/customer/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ProductComponent } from './components/customer/product/product.componen
     AddProductComponent,
     PaginationComponent,
     SweetsListComponent,
-    ProductComponent
+    ProductComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

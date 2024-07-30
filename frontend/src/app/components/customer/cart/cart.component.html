@@ -1,0 +1,115 @@
+<body>
+    <main>
+        <!-- Section -->
+        <section class="min-vh-100 d-flex align-items-center">
+            <div class="container">
+                <br>
+                <div class="row justify-content-center">
+                    <!-- Right Section -->
+                    <div class="col-12 col-md-8 col-lg-8">
+                        <section class="section section-lg pt-0">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card shadow-soft border-light p-4">
+                                            <div class="text-center pb-0">
+                                                <h2 class="mb-0 h5">Korpa</h2>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <table class="table table-striped">
+                                                    <tbody *ngFor="let content of order.content">
+                                                        <div class="card-body d-flex">
+                                                            <div class="col-md-4">
+                                                                <img class="card-img-top" [src]="'assets/sweets_pics/' + content.product.picture" alt="Card image cap">
+                                                            </div>
+                                                            <div class="col-md-1"></div>
+                                                            <div class="col-md-6 text-start">
+                                                                <h3 class="card-title">{{content.product.name}}</h3>
+                                                                <hr>
+                                                                <div class="product-details">
+                                                                    <h5 class="card-text">{{content.product.price}} RSD</h5>
+                                                                    <div class="amount-controls">
+                                                                        <h5>
+                                                                            <button type="button" class="btn custom-btn" (click)="sub(content.id)">&#8722;</button>
+                                                                        </h5>
+                                                                        <h5 class="text-center amount-text">{{content.amount}}</h5>
+                                                                        <h5>
+                                                                            <button type="button" class="btn custom-btn" (click)="add(content.id)">&#43;</button>
+                                                                        </h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- Left Section -->
+                    <div class="col-12 col-md-4 col-lg-4">
+                        <div class="card shadow-soft border-light p-4" style="background-color: #e3f2fd;">
+                            <div class="text-center pb-0">
+                                <h2 class="mb-0 h5">Podaci</h2>                               
+                            </div>
+                            <div class="card-body text-center">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <br>
+                                        <div class="form-group row">
+                                            <div class="col-sm-10 text-start">
+                                                <strong>Vrednost porudžbine: </strong>
+                                                <button class="btn btn-danger" disabled>
+                                                    {{price}} RSD
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group row">
+                                            <div class="col-sm-10">
+                                              <input type="text" class="form-control" [(ngModel)]="k.name" disabled>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group row">
+                                            <div class="col-sm-10">
+                                              <input type="text" class="form-control" [(ngModel)]="k.surname" disabled>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group row">
+                                            <div class="col-sm-10">
+                                              <input type="text" class="form-control" [(ngModel)]="k.mail">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group row">
+                                            <div class="col-sm-10">
+                                              <input type="text" class="form-control" [(ngModel)]="k.address">
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="form-group row">
+                                            <div class="col-sm-10">
+                                              <input type="text" class="form-control" [(ngModel)]="k.contact">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-danger" (click)="to_order()">
+                                Naruči
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </section>
+    </main>
+</body>
+

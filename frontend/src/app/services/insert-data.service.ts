@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Message } from '../models/message';
 import { Order } from '../models/order';
+import { Content } from '../models/content';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,12 @@ export class InsertDataService {
   constructor(private http: HttpClient) { }
 
   backendUrl = "http://localhost:4000"
-  add_order(o: Order){
+
+  add_order(username: string, price: number, content: Content[]){
     const data = {
-      order: o
+      username: username,
+      price: price,
+      content: content
     }
     return this.http.post<Message>(`${this.backendUrl}/insert/order`, data);
   }

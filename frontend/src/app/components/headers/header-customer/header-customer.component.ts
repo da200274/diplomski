@@ -35,4 +35,8 @@ export class HeaderCustomerComponent implements OnInit{
     this.router.navigate(['sweets'])
   }
 
+  goto_cart(){
+    this.router.navigate(['cart'])
+  }
+
 }

@@ -1,9 +1,10 @@
 import mongoose from 'mongoose'
+import product, { productSchema } from './product';
 
 const contentSchema = new mongoose.Schema(
     {
-        price: Number,
-        name: String
+        product: [productSchema],
+        amount: Number
     }
 );
 
@@ -11,7 +12,7 @@ const orderSchema = new mongoose.Schema(
     {
         username: String,
         price: Number,
-        status: Number,
+        status: String,
         content: [contentSchema]
     },{
         versionKey:false,

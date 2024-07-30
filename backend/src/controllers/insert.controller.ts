@@ -5,7 +5,17 @@ import ProductM from '../models/product'
 export class InsertController{
 
     add_order = (req: express.Request, res: express.Response)=>{
-        let order = req.body.order;
+        let usernameP = req.body.username;
+        let priceP = req.body.price
+        let contentP = req.body.content
+        let statusP = "poslato"
+
+        let order = {
+            username: usernameP,
+            price: priceP,
+            content: contentP,
+            status: statusP
+        }
 
         new OrderM(order).save().then(ok=>{
             res.json({message: "ok"})
