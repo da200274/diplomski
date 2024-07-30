@@ -10,6 +10,7 @@ import { UpdateDataComponent } from './components/update-data/update-data.compon
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { AddProductComponent } from './components/worker/add-product/add-product.component';
 import { SweetsListComponent } from './components/customer/sweets-list/sweets-list.component';
+import { ProductComponent } from './components/customer/product/product.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:"update_data", component:UpdateDataComponent},
   {path:"change_password", component:ChangePasswordComponent},
   {path:"add_product", component:AddProductComponent},
-  {path:"sweets", component:SweetsListComponent}
+  {path:"sweets", component:SweetsListComponent},
+  {path:"product", component:ProductComponent}
 ];
 
 @NgModule({

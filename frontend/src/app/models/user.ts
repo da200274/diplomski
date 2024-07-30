@@ -10,6 +10,4 @@ export class User{
     answer: string = ""
     type: string = ""
     profile_pic: string = ""
-
-    notifications: Notification[] = []
 }

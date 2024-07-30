@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { FetchService } from 'src/app/services/fetch.service';
 
@@ -9,7 +10,10 @@ import { FetchService } from 'src/app/services/fetch.service';
 })
 export class SweetsListComponent implements OnInit{
 
-  constructor(private fetchServis: FetchService){}
+  constructor(
+    private fetchServis: FetchService,
+    private router: Router
+  ){}
 
   ngOnInit(): void {
     this.initialize();
@@ -55,6 +59,11 @@ export class SweetsListComponent implements OnInit{
       rows.push(items.slice(i, i + 3));
     }
     return rows;
+  }
+
+  more(product: Product){
+    localStorage.setItem("product", JSON.stringify(product))
+    this.router.navigate(['product'])
   }
 
   type: string = ""

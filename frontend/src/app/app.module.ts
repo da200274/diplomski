@@ -18,6 +18,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { AddProductComponent } from './components/worker/add-product/add-product.component';
 import { PaginationComponent } from './components/customer/pagination/pagination.component';
 import { SweetsListComponent } from './components/customer/sweets-list/sweets-list.component';
+import { ProductComponent } from './components/customer/product/product.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SweetsListComponent } from './components/customer/sweets-list/sweets-li
     ChangePasswordComponent,
     AddProductComponent,
     PaginationComponent,
-    SweetsListComponent
+    SweetsListComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

@@ -9,9 +9,12 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 <img class="card-img-top" [src]="'assets/sweets_pics/' + item.picture" alt="Card image cap">
-                                <div class="card-body">
+                                <div class="card-body text-center">
                                     <p class="card-text card-title">{{item.name}}</p>
                                 </div>
+                                <button class="btn" style="background-color: #e3f2fd;" (click)="more(item)">
+                                    Više
+                                </button>
                             </div>
                         </div>
                     </div>
