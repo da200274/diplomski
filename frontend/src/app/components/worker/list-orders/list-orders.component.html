@@ -1,0 +1,121 @@
+<body>
+    <main>
+        <br>
+        <!-- Section -->
+        <section class="min-vh-100 d-flex align-items-center">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <!-- Top Left Section -->
+                    <div class="col-2 col-md-2 col-lg-2">
+                        <section class="section section-lg pt-0">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card shadow-soft border-light p-4">
+                                            <div class="form-group">
+                                                <img [src]="'assets/profile_pics/' + user.profile_pic" alt="Image Description" class="img-fluid w-100">
+                                            </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <p>Dobrodošli, {{user.name}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                    <!-- Top Right Section -->
+                    <div class="col-10 col-md-10 col-lg-10">
+                        <section class="section section-lg pt-0">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card shadow-soft border-light p-4">
+                                            <div class="text-center pb-0">
+                                                <h2 class="mb-0 h5">Porudžbine</h2>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped">
+                                                        <thead class="thead-dark">
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th class="d-none d-lg-table-cell">Kreirana</th>
+                                                                <th>Vrednost</th>
+                                                                <th>Više</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody *ngFor="let s of orders">
+                                                            <tr>
+                                                                <td>{{s._id}}</td>
+                                                                <td class="d-none d-md-table-cell">{{s.username}}</td>
+                                                                <td class="d-none d-lg-table-cell">{{getDay(s.created_at)}}.{{getMonth(s.created_at)}}.{{getYear(s.created_at)}}</td>
+                                                                <td>{{s.price}} RSD</td>
+                                                                <td>
+                                                                    <button type="button" class="btn btn-danger" (click)="show_more(s)">
+                                                                        &#43; <!-- Unicode for plus sign -->
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                            <tr *ngIf="s.show_details">
+                                                                <td colspan="5">
+                                                                    <div class="card">
+                                                                        <div class="card-body">
+                                                                            <h5>Detalji porudžbine</h5>
+                                                                            <p><strong>ID:</strong> {{s._id}}</p>
+                                                                            <p><strong>Korisnik:</strong> {{s.username}}</p>
+                                                                            <p><strong>Kreirana:</strong> {{getDay(s.created_at)}}.{{getMonth(s.created_at)}}.{{getYear(s.created_at)}}</p>
+                                                                            <p><strong>Vrednost:</strong> {{s.price}} RSD</p>
+                                                                            <p><strong>Status:</strong> {{s.status}}</p>
+                                                                            <p><strong>Za spremanje:</strong></p>
+                                                                            <table class="table">
+                                                                                <tbody *ngFor="let c of s.content">
+                                                                                    <div class="card-body d-flex">
+                                                                                        <div class="col-md-2">
+                                                                                            <img class="img-fluid w-100" [src]="'assets/sweets_pics/' + c.product.picture" alt="Card image cap">
+                                                                                        </div>
+                                                                                        <div class="col-md-1"></div>
+                                                                                        <div class="col-md-4 text-start">
+                                                                                            <h3 class="card-title">{{c.product.name}}</h3>
+                                                                                            <hr>
+                                                                                            <h3 class="card-title">Količina: {{c.amount}}</h3>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </tbody>
+                                                                            </table>
+                                                                            <div class="text-center" *ngIf="s.status == 'poslato'">
+                                                                                <button class="btn btn-block" (click)="accept()" style="background-color: #e3f2fd;">
+                                                                                    Prihvati
+                                                                                </button>
+                                                                                <div class="divider"></div>
+                                                                                <button class="btn btn-block btn-danger" (click)="decline()">
+                                                                                    Odbij
+                                                                                </button>
+                                                                            </div>
+                                                                            <div class="text-center" *ngIf="s.status == 'odobreno'">
+                                                                                <button class="btn btn-block" (click)="finish()" style="background-color: #e3f2fd;">
+                                                                                    Gotovo
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br>
+    </main>
+</body>

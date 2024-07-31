@@ -1,6 +1,6 @@
 import express from 'express'
-import KorisnikM from '../models/user';
-import PorudzbinaM from '../models/order'
+import UserM from '../models/user';
+import OrderM from '../models/order'
 
 function incrementCharacters(str: string) {
     return str.split('').map(char => {
@@ -13,43 +13,32 @@ function incrementCharacters(str: string) {
 export class UpdateController{
 
     change_password = (req: express.Request, res: express.Response)=>{
-        let korimeP = req.body.korime
-        let lozinkaP = req.body.lozinka
+        let usernameP = req.body.username
+        let passwordP = req.body.password
 
-        console.log(lozinkaP)
-        lozinkaP = incrementCharacters(lozinkaP)
-        console.log(lozinkaP)
+        passwordP = incrementCharacters(passwordP)
 
-        KorisnikM.updateOne({korime: korimeP}, {lozinka: lozinkaP}).then((ok)=>{
+        UserM.updateOne({username: usernameP}, {password: passwordP}).then((ok)=>{
             res.json({message: "ok"})
         }).catch((err)=>{
             console.log(err)
         })
     }
 
-    accept_offer = (req: express.Request, res: express.Response)=>{
-        let korimeP = req.body.korime
+    accept_order = (req: express.Request, res: express.Response)=>{
         let idP = req.body.id
-        let vremeP = req.body.vreme_dostave
-        PorudzbinaM.updateOne({_id: idP}, {status: 1, konobar: korimeP, vreme_dostave: vremeP}).then((ok)=>{
+        let statusP = req.body.status
+        OrderM.updateOne({_id: idP}, {status: statusP}).then((ok)=>{
             res.json({message: "ok"})
         }).catch((err)=>{
             console.log(err)
         })
     }
 
-    reject_offer = (req: express.Request, res: express.Response)=>{
+    reject_order = (req: express.Request, res: express.Response)=>{
         let idP = req.body.id
-        PorudzbinaM.deleteOne({_id: idP}).then((ok)=>{
-            res.json({message: "ok"})
-        }).catch((err)=>{
-            console.log(err)
-        })
-    }
-
-    deliver_order = (req: express.Request, res: express.Response)=>{
-        let idP = req.body.id
-        PorudzbinaM.updateOne({_id: idP}, {status: 2}).then((ok)=>{
+        let statusP = req.body.status
+        OrderM.updateOne({_id: idP}, {status: statusP}).then((ok)=>{
             res.json({message: "ok"})
         }).catch((err)=>{
             console.log(err)

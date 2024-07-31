@@ -2,17 +2,11 @@ import mongoose from 'mongoose'
 
 const notificationSchema = new mongoose.Schema(
     {
+        notification: String,
+        seen: Boolean,
         username: String,
-        password: String,
-        question: String,
-        answer: String,
-        name: String,
-        surname: String,
-        address: String,
-        contact: String,
-        mail: String,
-        type: String,
-        profile_pic: String
+    
+        order_id: String
     },{
       versionKey:false  
     }

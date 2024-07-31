@@ -11,32 +11,35 @@ export class UpdateDataService {
 
   backendUrl = "http://localhost:4000"
   
-  change_password(korime: string, lozinka: string){
+  change_password(username: string, password: string){
     const data = {
-      korime: korime,
-      lozinka: lozinka
+      username: username,
+      password: password
     }
     return this.http.post<Message>(`${this.backendUrl}/update/change_password`, data);
   }
-/*
-  accept_order(korime: string, _id: string, vreme_dostave: number){
+
+  accept_order(_id: string, status: string){
     
     const data = {
-      korime: korime,
       id: _id,
-      vreme_dostave: vreme_dostave
+      status: status
     }
-    return this.http.post<Poruka>(`${this.backendUrl}/update/accept_offer`, data);
+
+    return this.http.post<Message>(`${this.backendUrl}/update/accept_order`, data);
   }
 
-  reject_order(_id: string){
+  reject_order(_id: string, status: string){
+    
     const data = {
-      id: _id
+      id: _id,
+      status: status
     }
-    return this.http.post<Poruka>(`${this.backendUrl}/update/reject_offer`, data);
+
+    return this.http.post<Message>(`${this.backendUrl}/update/reject_order`, data);
   }
 
-  delivered_order(_id: string){
+  /*delivered_order(_id: string){
     const data = {
       id: _id
     }

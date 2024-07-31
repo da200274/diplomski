@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Product } from '../models/product';
+import { Order } from '../models/order';
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,10 @@ export class FetchService {
       type: type
     }
     return this.http.post<Product[]>(`${this.backendUrl}/get/products_by_type`, data);
+  }
+
+  orders(){
+    return this.http.post<Order[]>(`${this.backendUrl}/get/orders`, "");
   }
 
 }

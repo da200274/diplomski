@@ -35,7 +35,7 @@ export class HeaderWaiterComponent implements OnInit{
     this.router.navigate(['add_product'])
   }
 
-  goto_offer(){
-    this.router.navigate(['user_offers'])
+  goto_orders(){
+    this.router.navigate(['orders'])
   }
 }

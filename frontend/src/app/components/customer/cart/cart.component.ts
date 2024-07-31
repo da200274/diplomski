@@ -73,10 +73,22 @@ export class CartComponent implements OnInit{
     this.initialize()
   }
 
+  remove(id: string){
+    const cart_item_index = this.order.content.findIndex(item => item.id === id);
+    if (cart_item_index !== -1) {
+      this.order.content.splice(cart_item_index, 1);
+    } else {
+      console.log("Content not found");
+    }
+    this.store_order()
+    this.initialize()
+  }
+
   to_order(){
     this.insertServis.add_order(this.k.username, this.price, this.order.content).subscribe(
       message=>{
         if(message.message == "ok"){
+          localStorage.removeItem("cart")
           this.router.navigate([''])
         }
       }

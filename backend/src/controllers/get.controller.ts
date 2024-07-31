@@ -1,6 +1,6 @@
 import express from 'express'
 import UserM from '../models/user';
-import PorudzbinaM from '../models/order'
+import OrderM from '../models/order'
 import ProductM from '../models/product'
 
 export class GetController{
@@ -19,6 +19,14 @@ export class GetController{
         let typeP = req.body.type
         ProductM.find({type: typeP}).then((products)=>{
             res.json(products)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    orders = (req: express.Request, res: express.Response)=>{
+        OrderM.find().then((orders)=>{
+            res.json(orders)
         }).catch((err)=>{
             console.log(err)
         })

@@ -1,6 +1,7 @@
 import express from 'express'
 import OrderM from '../models/order';
-import ProductM from '../models/product'
+import ProductM from '../models/product';
+import NotificationM from '../models/notification'
 
 export class InsertController{
 
@@ -17,8 +18,21 @@ export class InsertController{
             status: statusP
         }
 
-        new OrderM(order).save().then(ok=>{
-            res.json({message: "ok"})
+        new OrderM(order).save().then(savedOrder=>{
+            
+            let n = "Vaša porudžbina sa šifrom " + savedOrder._id + " i cenom " + savedOrder.price + " RSD je u statusu " + savedOrder.status;
+            let notification = {
+                notification: n,
+                seen: false,
+                username: savedOrder.username,
+                order_id: savedOrder._id
+            }
+
+            new NotificationM(notification).save().then(savedNotification=>{
+                res.json({message: "ok"})
+            }).catch(err=>{
+            console.log(err)
+            })
         }).catch(err=>{
             console.log(err)
         })

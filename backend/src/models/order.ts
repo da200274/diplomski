@@ -3,7 +3,7 @@ import product, { productSchema } from './product';
 
 const contentSchema = new mongoose.Schema(
     {
-        product: [productSchema],
+        product: productSchema,
         amount: Number
     }
 );
@@ -16,7 +16,7 @@ const orderSchema = new mongoose.Schema(
         content: [contentSchema]
     },{
         versionKey:false,
-        timestamps: { createdAt: 'created_at' }
+        timestamps: { createdAt: 'created_at'}
     }
 );
 

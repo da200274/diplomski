@@ -12,5 +12,8 @@ getRouter.route("/products_by_type").post(
     (req,res)=>new GetController().product_by_type(req,res)
 )
 
+getRouter.route("/orders").post(
+    (req,res)=>new GetController().orders(req,res)
+)
 
 export default getRouter;

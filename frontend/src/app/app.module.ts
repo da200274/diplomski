@@ -20,6 +20,7 @@ import { PaginationComponent } from './components/customer/pagination/pagination
 import { SweetsListComponent } from './components/customer/sweets-list/sweets-list.component';
 import { ProductComponent } from './components/customer/product/product.component';
 import { CartComponent } from './components/customer/cart/cart.component';
+import { ListOrdersComponent } from './components/worker/list-orders/list-orders.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { CartComponent } from './components/customer/cart/cart.component';
     PaginationComponent,
     SweetsListComponent,
     ProductComponent,
-    CartComponent
+    CartComponent,
+    ListOrdersComponent
   ],
   imports: [
     BrowserModule,
