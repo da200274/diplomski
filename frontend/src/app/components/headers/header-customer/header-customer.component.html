@@ -14,11 +14,23 @@
           <li class="nav-item">
             <a class="nav-link" href="">Home</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Notifikacije
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li *ngFor="let notification of notifications">
+                <a class="dropdown-item" 
+                [ngClass]="{'seen': notification.seen, 'unseen': !notification.seen}"
+                (click)="change_seen(notification, $event)">{{notification.notification}}</a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a class="nav-link" (click)="goto_profil()">Profil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link">Promocije</a>
+            <a class="nav-link" (click)="goto_discounts()">Promocije</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -31,9 +43,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" (click)="goto_cart()">Korpa</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link">Notifikacije</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" (click)="logout()">Log out</a>

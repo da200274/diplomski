@@ -7,16 +7,18 @@ updateRouter.route("/change_password").post(
     (req,res)=>new UpdateController().change_password(req,res)
 )
 
-updateRouter.route("/accept_order").post(
-    (req,res)=>new UpdateController().accept_order(req,res)
-)
-
-updateRouter.route("/reject_order").post(
-    (req,res)=>new UpdateController().reject_order(req,res)
+updateRouter.route("/change_status").post(
+    (req,res)=>new UpdateController().change_status(req,res)
 )
 
 updateRouter.route("/reviewed").post(
     (req,res)=>new UpdateController().review(req,res)
 )
+
+updateRouter.route("/change_seen").post(
+    (req,res)=>new UpdateController().change_seen(req,res)
+)
+
+
 
 export default updateRouter;

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Notification } from 'src/app/models/notification';
+import { FetchService } from 'src/app/services/fetch.service';
+import { UpdateDataService } from 'src/app/services/update-data.service';
 
 @Component({
   selector: 'app-header-customer',
@@ -8,12 +11,47 @@ import { Router } from '@angular/router';
 })
 export class HeaderCustomerComponent implements OnInit{
 
-  constructor(private router: Router){}
+  constructor(
+    private router: Router,
+    private fetchServis: FetchService,
+    private changeServis: UpdateDataService
+  ){}
+
   ngOnInit(): void {
+    this.initialize()
+  }
+
+  initialize(){
     let user = localStorage.getItem("user")
     if(user){
       let temp = JSON.parse(user)
       localStorage.setItem("profile", temp.username)
+      this.username = temp.username
+      this.get_notifications()
+    }
+  }
+
+  get_notifications(){
+    this.fetchServis.notifications_for_username(this.username).subscribe(
+      notifications=>{
+        if(notifications){
+          this.notifications = notifications
+        }
+      }
+    )
+  }
+
+  change_seen(notification: Notification, event: Event) {
+    event.stopPropagation();
+    
+    if(notification.seen === false) {
+      this.changeServis.change_seen(notification.notification).subscribe(
+        message => {
+          if(message.message === "ok") {
+            this.get_notifications();
+          }
+        }
+      );
     }
   }
 
@@ -39,4 +77,10 @@ export class HeaderCustomerComponent implements OnInit{
     this.router.navigate(['cart'])
   }
 
+  goto_discounts(){
+    this.router.navigate(['discounts'])
+  }
+
+  notifications: Notification[] = []
+  username: string = ""
 }

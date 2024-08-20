@@ -2,6 +2,7 @@ import express from 'express'
 import UserM from '../models/user';
 import OrderM from '../models/order'
 import ProductM from '../models/product'
+import NotificationM from '../models/notification'
 
 export class GetController{
 
@@ -27,6 +28,15 @@ export class GetController{
     orders = (req: express.Request, res: express.Response)=>{
         OrderM.find().then((orders)=>{
             res.json(orders)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    notifications_for_username = (req: express.Request, res: express.Response)=>{
+        let usernameP = req.body.username
+        NotificationM.find({username: usernameP}).then((notifications)=>{
+            res.json(notifications)
         }).catch((err)=>{
             console.log(err)
         })

@@ -19,33 +19,27 @@ export class UpdateDataService {
     return this.http.post<Message>(`${this.backendUrl}/update/change_password`, data);
   }
 
-  accept_order(_id: string, status: string){
+  change_status(_id: string, status: string, username: string){
     
     const data = {
       id: _id,
-      status: status
+      status: status,
+      username: username
     }
 
-    return this.http.post<Message>(`${this.backendUrl}/update/accept_order`, data);
+    return this.http.post<Message>(`${this.backendUrl}/update/change_status`, data);
   }
 
-  reject_order(_id: string, status: string){
+  change_seen(text: string){
     
     const data = {
-      id: _id,
-      status: status
+      notification: text
     }
 
-    return this.http.post<Message>(`${this.backendUrl}/update/reject_order`, data);
+    return this.http.post<Message>(`${this.backendUrl}/update/change_seen`, data);
   }
 
-  /*delivered_order(_id: string){
-    const data = {
-      id: _id
-    }
-    return this.http.post<Poruka>(`${this.backendUrl}/update/deliver_order`, data);
-  }
-
+  /*
   give_review(_id: string, opis: string, ocena: number){
     const data = {
       id: _id,

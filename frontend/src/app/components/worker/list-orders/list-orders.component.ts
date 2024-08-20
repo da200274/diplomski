@@ -49,7 +49,7 @@ export class ListOrdersComponent implements OnInit{
   }
 
   accept(){
-    this.updateServis.accept_order(this.order._id, "odobreno").subscribe(
+    this.updateServis.change_status(this.order._id, "odobreno", this.order.username).subscribe(
       message=>{
         if(message.message == "ok"){
           this.initialize()
@@ -59,7 +59,7 @@ export class ListOrdersComponent implements OnInit{
   }
 
   decline(){
-    this.updateServis.accept_order(this.order._id, "odbijeno").subscribe(
+    this.updateServis.change_status(this.order._id, "odbijeno", this.order.username).subscribe(
       message=>{
         if(message.message == "ok"){
           this.initialize()
@@ -69,7 +69,7 @@ export class ListOrdersComponent implements OnInit{
   }
 
   finish(){
-    this.updateServis.accept_order(this.order._id, "završeno").subscribe(
+    this.updateServis.change_status(this.order._id, "završeno", this.order.username).subscribe(
       message=>{
         if(message.message == "ok"){
           this.initialize()

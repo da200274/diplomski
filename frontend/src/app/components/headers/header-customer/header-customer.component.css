@@ -1,0 +1,8 @@
+.seen {
+    background-color: #ffffff; /* Gray background for seen notifications */
+  }
+  
+  .unseen {
+    background-color: #1c77bd; /* Light red background for unseen notifications */
+  }
+  

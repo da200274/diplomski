@@ -1,6 +1,7 @@
 import express from 'express'
 import UserM from '../models/user';
 import OrderM from '../models/order'
+import NotificationM from '../models/notification'
 
 function incrementCharacters(str: string) {
     return str.split('').map(char => {
@@ -25,20 +26,34 @@ export class UpdateController{
         })
     }
 
-    accept_order = (req: express.Request, res: express.Response)=>{
+    change_status = (req: express.Request, res: express.Response)=>{
         let idP = req.body.id
         let statusP = req.body.status
-        OrderM.updateOne({_id: idP}, {status: statusP}).then((ok)=>{
-            res.json({message: "ok"})
+        let usernameP = req.body.username
+        OrderM.findByIdAndUpdate(idP, {status: statusP}, {new: true}).then((updatedOrder)=>{
+            if(updatedOrder){
+                let text = "Porudžbina " + idP + " je u statusu " + statusP
+                let notification = {
+                    username: usernameP,
+                    order_id: idP,
+                    seen: false,
+                    notification: text
+                }
+                new NotificationM(notification).save().then(savedNotification=>{
+                    res.json({message: "ok"})
+                }).catch(err=>{
+                    console.log(err)
+                })
+            }
         }).catch((err)=>{
             console.log(err)
         })
     }
 
-    reject_order = (req: express.Request, res: express.Response)=>{
-        let idP = req.body.id
-        let statusP = req.body.status
-        OrderM.updateOne({_id: idP}, {status: statusP}).then((ok)=>{
+    change_seen = (req: express.Request, res: express.Response)=>{
+        let notificationP = req.body.notification
+
+        NotificationM.updateOne({notification: notificationP}, {seen: true}).then((ok)=>{
             res.json({message: "ok"})
         }).catch((err)=>{
             console.log(err)

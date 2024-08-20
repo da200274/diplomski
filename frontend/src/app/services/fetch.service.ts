@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Product } from '../models/product';
 import { Order } from '../models/order';
+import { Notification } from '../models/notification';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,13 @@ export class FetchService {
 
   orders(){
     return this.http.post<Order[]>(`${this.backendUrl}/get/orders`, "");
+  }
+
+  notifications_for_username(username: string){
+    const data = {
+      username: username
+    }
+    return this.http.post<Notification[]>(`${this.backendUrl}/get/notifications_for_username`, data);
   }
 
 }
