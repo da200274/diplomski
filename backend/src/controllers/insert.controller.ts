@@ -2,6 +2,7 @@ import express from 'express'
 import OrderM from '../models/order';
 import ProductM from '../models/product';
 import NotificationM from '../models/notification'
+import CommentM from '../models/comment'
 
 export class InsertController{
 
@@ -56,6 +57,24 @@ export class InsertController{
         }
 
         new ProductM(product).save().then(ok=>{
+            res.json({message: "ok"})
+        }).catch(err=>{
+            console.log(err)
+        })
+    }
+
+    add_comment = (req: express.Request, res: express.Response)=>{
+        let usernameP = req.body.username
+        let commentP = req.body.comment
+        let product_idP = req.body.product_id
+
+        let comment = {
+            username: usernameP,
+            comment: commentP,
+            product_id: product_idP
+        }
+
+        new CommentM(comment).save().then(ok=>{
             res.json({message: "ok"})
         }).catch(err=>{
             console.log(err)

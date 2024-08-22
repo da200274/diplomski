@@ -22,6 +22,7 @@ import { ProductComponent } from './components/customer/product/product.componen
 import { CartComponent } from './components/customer/cart/cart.component';
 import { ListOrdersComponent } from './components/worker/list-orders/list-orders.component';
 import { PromotionsComponent } from './components/customer/promotions/promotions.component';
+import { CommentFormComponent } from './components/customer/comment-form/comment-form.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { PromotionsComponent } from './components/customer/promotions/promotions
     ProductComponent,
     CartComponent,
     ListOrdersComponent,
-    PromotionsComponent
+    PromotionsComponent,
+    CommentFormComponent
   ],
   imports: [
     BrowserModule,

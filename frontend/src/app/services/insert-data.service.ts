@@ -33,4 +33,13 @@ export class InsertDataService {
     return this.http.post<Message>(`${this.backendUrl}/insert/product`, data);
   }
 
+  add_comment(username: string, product_id: string, text: string){
+    const data = {
+      username: username,
+      product_id: product_id,
+      comment: text
+    }
+    return this.http.post<Message>(`${this.backendUrl}/insert/comment`, data);
+  }
+
 }

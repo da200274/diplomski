@@ -3,6 +3,7 @@ import UserM from '../models/user';
 import OrderM from '../models/order'
 import ProductM from '../models/product'
 import NotificationM from '../models/notification'
+import CommentM from '../models/comment'
 
 export class GetController{
 
@@ -37,6 +38,15 @@ export class GetController{
         let usernameP = req.body.username
         NotificationM.find({username: usernameP}).then((notifications)=>{
             res.json(notifications)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
+    comments_by_product = (req: express.Request, res: express.Response)=>{
+        let product_idP = req.body.product_id
+        CommentM.find({product_id: product_idP}).then((comments)=>{
+            res.json(comments)
         }).catch((err)=>{
             console.log(err)
         })

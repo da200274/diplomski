@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Comment } from 'src/app/models/comment';
 import { Order } from 'src/app/models/order';
 import { Product } from 'src/app/models/product';
 import { FetchService } from 'src/app/services/fetch.service';
@@ -11,7 +13,8 @@ import { FetchService } from 'src/app/services/fetch.service';
 export class ProductComponent implements OnInit{
 
   constructor(
-    private fetchServis: FetchService
+    private fetchServis: FetchService,
+    private router: Router
   ){}
 
   ngOnInit(): void {
@@ -20,6 +23,7 @@ export class ProductComponent implements OnInit{
 
   initialize(){
     this.fetch_product()
+    this.fetch_comments()
   }
 
   fetch_product(){
@@ -27,6 +31,16 @@ export class ProductComponent implements OnInit{
     if(temp){
       this.product = JSON.parse(temp)
     }
+  }
+
+  fetch_comments(){
+    this.fetchServis.comments_by_product(this.product._id).subscribe(
+      comments=>{
+        if(comments){
+          this.comments = comments
+        }
+      }
+    )
   }
 
   fetch_order(){
@@ -68,6 +82,18 @@ export class ProductComponent implements OnInit{
     }
   }
 
+  set_active_tab(tab: string){
+    this.active_tab = tab
+  }
+
+  leave_comment(){
+    this.router.navigate(['add_comment'])
+  }
+
   product: Product = new Product()
   order: Order = new Order()
+
+  comments: Comment[] = []
+
+  active_tab: string = 'informacije'
 }

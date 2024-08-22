@@ -20,5 +20,11 @@ getRouter.route("/notifications_for_username").post(
     (req,res)=>new GetController().notifications_for_username(req,res)
 )
 
+getRouter.route("/comments_by_product").post(
+    (req,res)=>new GetController().comments_by_product(req,res)
+)
+
+
+
 
 export default getRouter;

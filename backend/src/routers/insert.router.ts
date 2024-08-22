@@ -11,4 +11,8 @@ insertRouter.route("/product").post(
     (req,res)=>new InsertController().add_product(req,res)
 )
 
+insertRouter.route("/comment").post(
+    (req,res)=>new InsertController().add_comment(req,res)
+)
+
 export default insertRouter;

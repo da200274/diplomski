@@ -14,6 +14,7 @@ import { ProductComponent } from './components/customer/product/product.componen
 import { CartComponent } from './components/customer/cart/cart.component';
 import { ListOrdersComponent } from './components/worker/list-orders/list-orders.component';
 import { PromotionsComponent } from './components/customer/promotions/promotions.component';
+import { CommentFormComponent } from './components/customer/comment-form/comment-form.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [
   {path:"product", component:ProductComponent},
   {path:"cart", component:CartComponent},
   {path:"orders", component: ListOrdersComponent},
-  {path:"discounts", component: PromotionsComponent}
+  {path:"discounts", component: PromotionsComponent},
+  {path:"add_comment", component: CommentFormComponent}
 ];
 
 @NgModule({

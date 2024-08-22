@@ -1,0 +1,31 @@
+<body>
+    <main>
+    <section class="min-vh-100 d-flex align-items-center">
+        <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6 justify-content-center">
+            <br>
+            <div class="card shadow-soft p-4" style="background-color: #e3f2fd;">
+                <div class="text-center pb-0">
+                <h2 class="mb-0 h5">Dodaj komentar</h2>
+                </div>
+                <div class="card-body text-center">
+                <div class="form-group">
+                    <div class="form-group">
+                        <label for="comment">Komentar:</label>
+                        <div class="d-flex d-inline-block ml-2">
+                            <input type="text" class="form-control" id="comment" [(ngModel)]="comment">
+                            <button class="btn btn-info" (click)="add_comment()">Dodaj</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    </main>
+    <br>
+</body>
+

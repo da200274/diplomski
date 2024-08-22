@@ -1,4 +1,6 @@
 export class Comment{
     comment: string = ""; 
-    username: string = ""
+    username: string = "";
+
+    product_id: string = "";
 }
