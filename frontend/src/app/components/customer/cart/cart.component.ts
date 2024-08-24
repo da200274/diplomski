@@ -87,10 +87,9 @@ export class CartComponent implements OnInit{
   to_order(){
     this.insertServis.add_order(this.k.username, this.price, this.order.content).subscribe(
       message=>{
-        if(message.message == "ok"){
+          alert(message.message)
           localStorage.removeItem("cart")
           this.router.navigate([''])
-        }
       }
     )
   }

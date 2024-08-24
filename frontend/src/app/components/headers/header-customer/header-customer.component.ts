@@ -77,8 +77,8 @@ export class HeaderCustomerComponent implements OnInit{
     this.router.navigate(['cart'])
   }
 
-  goto_discounts(){
-    this.router.navigate(['discounts'])
+  goto_orders(){
+    this.router.navigate(['my_orders'])
   }
 
   notifications: Notification[] = []

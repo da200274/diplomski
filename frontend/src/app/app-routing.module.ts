@@ -13,8 +13,8 @@ import { SweetsListComponent } from './components/customer/sweets-list/sweets-li
 import { ProductComponent } from './components/customer/product/product.component';
 import { CartComponent } from './components/customer/cart/cart.component';
 import { ListOrdersComponent } from './components/worker/list-orders/list-orders.component';
-import { PromotionsComponent } from './components/customer/promotions/promotions.component';
 import { CommentFormComponent } from './components/customer/comment-form/comment-form.component';
+import { MyOrdersComponent } from './components/customer/my-orders/my-orders.component';
 
 const routes: Routes = [
   {path:"", component:HomeComponent},
@@ -28,8 +28,8 @@ const routes: Routes = [
   {path:"product", component:ProductComponent},
   {path:"cart", component:CartComponent},
   {path:"orders", component: ListOrdersComponent},
-  {path:"discounts", component: PromotionsComponent},
-  {path:"add_comment", component: CommentFormComponent}
+  {path:"add_comment", component: CommentFormComponent},
+  {path:"my_orders", component:MyOrdersComponent}
 ];
 
 @NgModule({

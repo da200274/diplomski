@@ -1,29 +1,10 @@
+
 <body>
     <main>
-        <!-- Section -->
-        <section class="min-vh-100 d-flex align-items-center">
+        <br>
+        <section class="min-vh-100 d-flex flex-column align-items-center">
             <div class="container">
-                <div class="row justify-content-center">
-                    <!-- Top Left Section -->
-                    <div class="col-8 col-md-4 col-lg-2">
-                        <section class="section section-lg pt-0">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="card shadow-soft border-light p-4">
-                                            <div class="form-group">
-                                                <img [src]="'assets/profile_pics/' + user.profile_pic" alt="Image Description" class="img-fluid w-100">
-                                            </div>
-                                            <br>
-                                            <div class="form-group">
-                                                <p>Dobrodošli, {{user.name}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
+                <div class="row">
                     <div class="card text-center">
                         <div class="card-header">
                             <ul class="nav nav-tabs card-header-tabs">
@@ -61,7 +42,7 @@
                                 </li>
                               </ul>
                         </div>
-                        <div class="col-10 col-md-10 col-lg-10">
+                        <div class="col-12 col-md-12 col-lg-12">
                             <section class="section section-lg pt-0">
                                 <div class="container">
                                     <div class="row">
@@ -95,7 +76,7 @@
                                                                         </button>
                                                                     </td>
                                                                 </tr>
-                                                                <tr *ngIf="s.show_details" class="text-start">
+                                                                <tr *ngIf="s.show_details">
                                                                     <td colspan="5">
                                                                         <div class="card">
                                                                             <div class="card-body">
@@ -121,20 +102,6 @@
                                                                                         </div>
                                                                                     </tbody>
                                                                                 </table>
-                                                                                <div class="text-center" *ngIf="s.status == 'poslato'">
-                                                                                    <button class="btn btn-block" (click)="accept()" style="background-color: #e3f2fd;">
-                                                                                        Prihvati
-                                                                                    </button>
-                                                                                    <div class="divider"></div>
-                                                                                    <button class="btn btn-block btn-danger" (click)="decline()">
-                                                                                        Odbij
-                                                                                    </button>
-                                                                                </div>
-                                                                                <div class="text-center" *ngIf="s.status == 'odobreno'">
-                                                                                    <button class="btn btn-block" (click)="finish()" style="background-color: #e3f2fd;">
-                                                                                        Gotovo
-                                                                                    </button>
-                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </td>
@@ -153,6 +120,5 @@
                 </div>
             </div>
         </section>
-        <br>
     </main>
 </body>

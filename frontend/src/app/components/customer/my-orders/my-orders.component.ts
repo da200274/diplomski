@@ -3,18 +3,16 @@ import { Message } from 'src/app/models/message';
 import { Order } from 'src/app/models/order';
 import { User } from 'src/app/models/user';
 import { FetchService } from 'src/app/services/fetch.service';
-import { UpdateDataService } from 'src/app/services/update-data.service';
 
 @Component({
-  selector: 'app-list-orders',
-  templateUrl: './list-orders.component.html',
-  styleUrls: ['./list-orders.component.css']
+  selector: 'app-my-orders',
+  templateUrl: './my-orders.component.html',
+  styleUrls: ['./my-orders.component.css']
 })
-export class ListOrdersComponent implements OnInit{
+export class MyOrdersComponent implements OnInit{
 
   constructor(
-    private fetchServis: FetchService,
-    private updateServis: UpdateDataService
+    private fetchServis: FetchService
   ){}
 
   ngOnInit(): void {
@@ -22,12 +20,12 @@ export class ListOrdersComponent implements OnInit{
   }
 
   initialize(){
-    this.fetch_orders()
     this.fetch_user()
+    this.fetch_orders()
   }
 
   fetch_orders(){
-    this.fetchServis.orders().subscribe(
+    this.fetchServis.user_orders(this.user.username).subscribe(
       orders=>{
         if(orders){
           this.orders = orders
@@ -48,35 +46,6 @@ export class ListOrdersComponent implements OnInit{
     this.order.show_details = !this.order.show_details;
   }
 
-  accept(){
-    this.updateServis.change_status(this.order._id, "odobreno", this.order.username).subscribe(
-      message=>{
-        if(message.message == "ok"){
-          this.initialize()
-        }
-      }
-    )
-  }
-
-  decline(){
-    this.updateServis.change_status(this.order._id, "odbijeno", this.order.username).subscribe(
-      message=>{
-        if(message.message == "ok"){
-          this.initialize()
-        }
-      }
-    )
-  }
-
-  finish(){
-    this.updateServis.change_status(this.order._id, "zavrseno", this.order.username).subscribe(
-      message=>{
-        if(message.message == "ok"){
-          this.initialize()
-        }
-      }
-    )
-  }
 
   getDay(d: Date){
     const date = new Date(d)
@@ -103,5 +72,5 @@ export class ListOrdersComponent implements OnInit{
 
   user: User = new User()
 
-  active_tab: string = ""
+  active_tab: string = "";
 }

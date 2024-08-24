@@ -32,7 +32,7 @@ export class UpdateController{
         let usernameP = req.body.username
         OrderM.findByIdAndUpdate(idP, {status: statusP}, {new: true}).then((updatedOrder)=>{
             if(updatedOrder){
-                let text = "Porudžbina " + idP + " je u statusu " + statusP
+                let text = "Porudžbina: " + idP + " , status: " + statusP
                 let notification = {
                     username: usernameP,
                     order_id: idP,

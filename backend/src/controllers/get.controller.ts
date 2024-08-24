@@ -34,9 +34,20 @@ export class GetController{
         })
     }
 
+    user_orders = (req: express.Request, res: express.Response)=>{
+        let usernameP = req.body.username
+        OrderM.find({username: usernameP}).then((orders)=>{
+            res.json(orders)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+
     notifications_for_username = (req: express.Request, res: express.Response)=>{
         let usernameP = req.body.username
-        NotificationM.find({username: usernameP}).then((notifications)=>{
+        NotificationM.find({username: usernameP})
+        .sort({created_at: -1})
+        .then((notifications)=>{
             res.json(notifications)
         }).catch((err)=>{
             console.log(err)
@@ -45,7 +56,9 @@ export class GetController{
 
     comments_by_product = (req: express.Request, res: express.Response)=>{
         let product_idP = req.body.product_id
-        CommentM.find({product_id: product_idP}).then((comments)=>{
+        CommentM.find({product_id: product_idP})
+        .sort({created_at: -1})
+        .then((comments)=>{
             res.json(comments)
         }).catch((err)=>{
             console.log(err)

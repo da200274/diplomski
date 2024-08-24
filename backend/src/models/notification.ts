@@ -8,7 +8,8 @@ const notificationSchema = new mongoose.Schema(
     
         order_id: String
     },{
-      versionKey:false  
+      versionKey:false,
+      timestamps: { createdAt: 'created_at'}
     }
 );
 

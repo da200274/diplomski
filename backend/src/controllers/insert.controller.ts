@@ -21,7 +21,7 @@ export class InsertController{
 
         new OrderM(order).save().then(savedOrder=>{
             
-            let n = "Vaša porudžbina sa šifrom " + savedOrder._id + " i cenom " + savedOrder.price + " RSD je u statusu " + savedOrder.status;
+            let n = "Porudžbina: " + savedOrder._id + ", status: " + savedOrder.status;
             let notification = {
                 notification: n,
                 seen: false,
@@ -30,7 +30,7 @@ export class InsertController{
             }
 
             new NotificationM(notification).save().then(savedNotification=>{
-                res.json({message: "ok"})
+                res.json({message: "Uspešno ste napravili porudžbinu u našoj poslastičarnici. <b>Pritisnite dugme Refresh<b> da biste videli notifikacije."})
             }).catch(err=>{
             console.log(err)
             })

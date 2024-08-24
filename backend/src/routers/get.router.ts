@@ -16,6 +16,10 @@ getRouter.route("/orders").post(
     (req,res)=>new GetController().orders(req,res)
 )
 
+getRouter.route("/user_orders").post(
+    (req,res)=>new GetController().user_orders(req,res)
+)
+
 getRouter.route("/notifications_for_username").post(
     (req,res)=>new GetController().notifications_for_username(req,res)
 )

@@ -32,6 +32,13 @@ export class FetchService {
     return this.http.post<Order[]>(`${this.backendUrl}/get/orders`, "");
   }
 
+  user_orders(username: string){
+    const data = {
+      username: username
+    }
+    return this.http.post<Order[]>(`${this.backendUrl}/get/user_orders`, data);
+  }
+
   notifications_for_username(username: string){
     const data = {
       username: username

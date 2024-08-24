@@ -1,8 +1,20 @@
 .seen {
-    background-color: #ffffff; /* Gray background for seen notifications */
-  }
+  background-color: #ffffff; /* Gray background for seen notifications */
+}
   
-  .unseen {
-    background-color: #1c77bd; /* Light red background for unseen notifications */
-  }
+.unseen {
+  background-color: #e3f2fd; /* Light red background for unseen notifications */
+}
+
+.dropdown-menu .dropdown-item {
+  margin: 0;  /* Removes any additional space around the text */
+  padding: 5px 15px;  /* Adjust as needed to control padding */
+}
+
+.dropdown-menu hr {
+  margin: 1px 0;  /* Adjusts the space above and below the horizontal line */
+  border: 0;
+  border-top: 1px solid #ccc;  /* A thin line to distinguish the items */
+}
+
   
