@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
+import { ChangeProductService } from 'src/app/services/change-product.service';
 import { FetchService } from 'src/app/services/fetch.service';
 
 @Component({
@@ -12,11 +13,20 @@ export class SweetsListComponent implements OnInit{
 
   constructor(
     private fetchServis: FetchService,
-    private router: Router
+    private router: Router,
+    private eventServis: ChangeProductService
   ){}
 
   ngOnInit(): void {
+    this.eventServis.event$.subscribe(data => {
+      this.handleEvent(data);
+    });
     this.initialize();
+  }
+
+  handleEvent(data: any) {
+    localStorage.setItem("sweet_type", data.type)
+    this.initialize()
   }
 
   update_paged_items() {

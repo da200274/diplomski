@@ -30,7 +30,7 @@ export class InsertController{
             }
 
             new NotificationM(notification).save().then(savedNotification=>{
-                res.json({message: "Uspešno ste napravili porudžbinu u našoj poslastičarnici. <b>Pritisnite dugme Refresh<b> da biste videli notifikacije."})
+                res.json({message: "Uspešno ste napravili porudžbinu u našoj poslastičarnici. Pritisnite dugme Refresh da biste videli notifikacije."})
             }).catch(err=>{
             console.log(err)
             })

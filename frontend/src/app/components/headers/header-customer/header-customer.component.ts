@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Notification } from 'src/app/models/notification';
+import { ChangeProductService } from 'src/app/services/change-product.service';
 import { FetchService } from 'src/app/services/fetch.service';
 import { UpdateDataService } from 'src/app/services/update-data.service';
 
@@ -14,7 +15,8 @@ export class HeaderCustomerComponent implements OnInit{
   constructor(
     private router: Router,
     private fetchServis: FetchService,
-    private changeServis: UpdateDataService
+    private changeServis: UpdateDataService,
+    private eventServis: ChangeProductService
   ){}
 
   ngOnInit(): void {
@@ -70,6 +72,10 @@ export class HeaderCustomerComponent implements OnInit{
 
   goto_sweets(type: string){
     localStorage.setItem("sweet_type", type)
+    
+    const eventData = { type: type };
+    this.eventServis.emitEvent(eventData);
+
     this.router.navigate(['sweets'])
   }
 

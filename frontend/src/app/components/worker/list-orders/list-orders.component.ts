@@ -24,6 +24,7 @@ export class ListOrdersComponent implements OnInit{
   initialize(){
     this.fetch_orders()
     this.fetch_user()
+    this.active_tab = "poslato";
   }
 
   fetch_orders(){
@@ -95,6 +96,7 @@ export class ListOrdersComponent implements OnInit{
 
   set_active_tab(tab: string){
     this.active_tab = tab
+    this.order.show_details = false
   }
 
   orders: Order[] = []

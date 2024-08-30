@@ -1,4 +1,3 @@
-obavestenje nakon porucivanja
-tri sekcije za porudzbine, pristigle, u pripreme, sve zavrsene
 promocije i njihov prikaz u home
-promena torti i kolaca da bude odmah
+dopuniti kolace
+promeniti ikonicu za notifikacije
