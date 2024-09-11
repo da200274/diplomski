@@ -11,10 +11,6 @@ updateRouter.route("/change_status").post(
     (req,res)=>new UpdateController().change_status(req,res)
 )
 
-updateRouter.route("/reviewed").post(
-    (req,res)=>new UpdateController().review(req,res)
-)
-
 updateRouter.route("/change_seen").post(
     (req,res)=>new UpdateController().change_seen(req,res)
 )

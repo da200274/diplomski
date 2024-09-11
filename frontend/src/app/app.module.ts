@@ -23,6 +23,7 @@ import { CartComponent } from './components/customer/cart/cart.component';
 import { ListOrdersComponent } from './components/worker/list-orders/list-orders.component';
 import { CommentFormComponent } from './components/customer/comment-form/comment-form.component';
 import { MyOrdersComponent } from './components/customer/my-orders/my-orders.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { MyOrdersComponent } from './components/customer/my-orders/my-orders.com
     CartComponent,
     ListOrdersComponent,
     CommentFormComponent,
-    MyOrdersComponent
+    MyOrdersComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,

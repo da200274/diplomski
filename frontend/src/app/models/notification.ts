@@ -6,4 +6,6 @@ export class Notification{
     username: string = ""
     
     id_order: string = ""
+
+    created_at: Date = new Date()
 }

@@ -28,13 +28,13 @@
                         </div>
                         <div class="card-body d-flex" div *ngIf="active_tab === 'informacije'">
                             <div class="col-md-4">
-                                <img class="card-img-top custom-img" [src]="'assets/sweets_pics/' + product.picture" alt="Card image cap">
+                                <img class="card-img-top custom-img picture" [src]="'assets/sweets_pics/' + product.picture" alt="Card image cap">
                             </div>
                             <div class="col-md-1"></div>
                             <div class="col-md-7 text-start">
                                 <h3 class="card-title">{{product.name}}</h3>
                                 <p class="card-text"> <strong>Opis: </strong>{{product.description}}</p>
-                                <p class="card-text"> <strong>Sastav: </strong>{{product.content}}</p>
+                                <p class="card-text" *ngIf="product.type != 'sale'"> <strong>Sastav: </strong>{{product.content}}</p>
                                 <p class="card-text"> <strong>Cena: </strong>{{product.price}} din</p>
                                 <button class="btn" style="background-color: #e3f2dd;" (click)="add_to_cart()">Dodaj u korpu</button>
                             </div>

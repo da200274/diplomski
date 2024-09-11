@@ -3,6 +3,7 @@ import { Message } from 'src/app/models/message';
 import { Order } from 'src/app/models/order';
 import { User } from 'src/app/models/user';
 import { FetchService } from 'src/app/services/fetch.service';
+import { SortService } from 'src/app/services/sort.service';
 import { UpdateDataService } from 'src/app/services/update-data.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class ListOrdersComponent implements OnInit{
 
   constructor(
     private fetchServis: FetchService,
-    private updateServis: UpdateDataService
+    private updateServis: UpdateDataService,
+    private sortServis: SortService
   ){}
 
   ngOnInit(): void {
@@ -99,6 +101,25 @@ export class ListOrdersComponent implements OnInit{
     this.order.show_details = false
   }
 
+  sort_data(column: string): void {
+    if (this.sort_column === column) {
+      this.sort_direction = this.sort_direction === 'asc' ? 'desc' : 'asc';
+    } else {
+      this.sort_column = column;
+      this.sort_direction = 'asc';
+    }
+
+    this.get_sorted()
+  }
+
+  get_sorted(){
+    this.sortServis.sort(this.sort_column, this.sort_direction).subscribe(
+      rs=>{
+        if(rs) this.orders = rs
+      }
+    )
+  }
+
   orders: Order[] = []
   order: Order = new Order()
   message: Message = new Message()
@@ -106,4 +127,7 @@ export class ListOrdersComponent implements OnInit{
   user: User = new User()
 
   active_tab: string = ""
+
+  sort_direction: 'asc' | 'desc' = 'asc';
+  sort_column: string = '';
 }

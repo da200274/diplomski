@@ -68,6 +68,14 @@ export class MyOrdersComponent implements OnInit{
     this.order.show_details = false
   }
 
+  modify_id(id: string){
+    const part1: string = id.slice(0, 5)
+    const part2: string = '...'
+    const part3: string = id.slice(-5)
+
+    return part1 + part2 + part3 
+  }
+
   orders: Order[] = []
   order: Order = new Order()
   message: Message = new Message()

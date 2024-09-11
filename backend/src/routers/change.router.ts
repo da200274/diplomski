@@ -18,10 +18,10 @@ console.log(__dirname)
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, destinationPath); // Directory where uploaded files will be stored
+      cb(null, destinationPath);
     },
     filename: function (req, file, cb) {
-      cb(null, Date.now() + '-' + file.originalname); // Rename the uploaded file
+      cb(null, Date.now() + '-' + file.originalname);
     },
   });
   const upload = multer({ storage: storage });

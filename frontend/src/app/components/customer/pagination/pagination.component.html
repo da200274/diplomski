@@ -1,5 +1,5 @@
 <div *ngIf="total_items > items_per_page" class="text-center">
-    <ul class="pagination">
+    <ul class="pagination custom-pagination">
       <li class="page-item" [class.disabled]="current_page === 1" (click)="change_page(current_page - 1)">
         <a class="page-link">Prethodna</a>
       </li>

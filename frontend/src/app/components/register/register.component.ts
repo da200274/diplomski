@@ -36,8 +36,8 @@ export class RegisterComponent {
           if (width >= 100 && width <= 300 && height >= 100 && height <= 300) {
             this.message = '';
           } 
-          else if(fileSize > 3 * 1024 * 1024) {
-            this.message = 'Dimenzije slike moraju biti veličine manje od 3MB!';
+          else if(fileSize > 5 * 1024 * 1024) {
+            this.message = 'Veličina slike mora biti manja od 5MB!';
           }
         };
       };

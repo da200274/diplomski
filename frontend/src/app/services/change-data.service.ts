@@ -21,10 +21,11 @@ export class ChangeDataService {
     return this.http.post<Message>(`${this.backendUrl}/change/add_photo`, formData);
   }
 
-  update_photo(path: string, name: string){
+  update_photo(path: string, name: string, type: string){
     const data = {
       name: name,
-      path: path
+      path: path,
+      type: type
     }
     console.log(path)
     return this.http.post<Message>(`${this.backendUrl}/change/update_photo`, data);

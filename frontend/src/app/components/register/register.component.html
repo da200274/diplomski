@@ -31,15 +31,15 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="potvrda">Sigurnosno pitanje</label>
+                                        <label for="pitanje">Sigurnosno pitanje</label>
                                         <div class="input-group mb-4">
                                             <input class="form-control" id="pitanje" [(ngModel)]="question" type="text" aria-label="Password" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="potvrda">Odgovor na pitanje</label>
+                                        <label for="odgovor">Odgovor na pitanje</label>
                                         <div class="input-group mb-4">
-                                            <input class="form-control" id="odgovor" [(ngModel)]="answer" type="text" aria-label="Password" required>
+                                            <input class="form-control" id="odgovor" [(ngModel)]="answer" type="text" aria-label="potvrda" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -85,7 +85,7 @@
                                 <div class="d-block d-sm-flex justify-content-center align-items-center mt-4">
                                     <span class="font-weight-normal">
                                         Već imate nalog?
-                                        <a (click)="login_page()" class="font-weight-bold" style="color:black; text-decoration: none;">Ulogujte se</a>
+                                        <a (click)="login_page()" class="font-weight-bold" style="text-decoration: none; color: rgb(14, 139, 206);">Ulogujte se</a>
                                     </span>
                                 </div>
                             </div>

@@ -7,8 +7,9 @@ export class ChangeController{
         console.log(req.body)
         let nameP = req.body.name
         let picP = req.body.path
+        let typeP = req.body.type
 
-        ProductM.updateOne({name: nameP}, {picture: picP}).then(ok=>{
+        ProductM.updateOne({name: nameP, type: typeP}, {picture: picP}).then(ok=>{
             res.json({message: "ok"})
         }).catch((err)=>{
             console.log(err)

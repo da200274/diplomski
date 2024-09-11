@@ -81,6 +81,7 @@ export class AddProductComponent{
 
   send_photo(){
     if(this.file != null ){
+      console.log(this.file)
       this.changeDataServis.file_upload(this.file).subscribe(
         data=>{
           if(data.message != "not ok"){
@@ -98,7 +99,7 @@ export class AddProductComponent{
   }
 
   update_photo(path: string){
-    this.changeDataServis.update_photo(path, this.name).subscribe(
+    this.changeDataServis.update_photo(path, this.name, this.type).subscribe(
       data=>{
         if(data.message == "ok"){
           console.log("Uspešno dodavanje proizvoda.");

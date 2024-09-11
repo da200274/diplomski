@@ -60,15 +60,4 @@ export class UpdateController{
         })
     }
 
-    review = (req: express.Request, res: express.Response)=>{
-        /*let idR = req.body.id
-        let komentar = req.body.komentar
-        let ocena = req.body.ocena
-        RezervacijaM.updateOne({_id: idR}, { komentar: komentar, ocena: ocena}).then((ok)=>{
-            res.json({message: "ok"})
-        }).catch((err)=>{
-            console.log(err)
-        })*/
-    }
-
 }
