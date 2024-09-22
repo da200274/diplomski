@@ -30,7 +30,7 @@
                 </div>
             </div>
         </section>
-        <section class="min-vh-100 d-flex flex-column align-items-center" *ngIf="user_type != 'worker'">
+        <section class="min-vh-100 d-flex flex-column align-items-center" *ngIf="user_type == 'customer'">
             <h2 style="text-align: center;">IZDVAJAMO</h2>
             <div class="container">
                 <div class="row" *ngFor="let row of getRows(paged_items)">
